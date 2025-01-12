@@ -14,7 +14,7 @@ const Landing = () => {
         className="w-1/2 relative overflow-hidden"
       >
         <img
-          src="/lovable-uploads/b4bec6a0-8b00-42c9-b276-c48d648c269c.png"
+          src="/lovable-uploads/c89c229d-4bfc-4750-aaa3-a1f29cf5d482.png"
           alt="Profile"
           className="w-full h-full object-cover"
         />
