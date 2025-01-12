@@ -22,10 +22,10 @@ const Navbar = () => {
         isScrolled 
           ? "bg-white/80 shadow-lg py-2" 
           : "bg-transparent py-4"
-      } backdrop-blur-sm`}
+      } backdrop-blur-sm mt-4`}
     >
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between bg-white/50 rounded-full px-6 py-2 backdrop-blur-sm">
           <Link to="/" className="text-xl font-bold text-gray-800">TB</Link>
           <div className="hidden md:flex space-x-8">
             <NavLink to="/about" current={location.pathname}>About</NavLink>
