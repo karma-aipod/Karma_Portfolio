@@ -12,9 +12,9 @@ const About = () => {
   const [showAboutDialog, setShowAboutDialog] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black p-8 space-y-12">
+    <div className="min-h-screen bg-white p-8 space-y-12">
       {/* Hero Section */}
-      <Card className="w-full h-[500px] bg-gradient-to-r from-black via-gray-900 to-black relative overflow-hidden border-none shadow-2xl">
+      <Card className="w-full h-[500px] bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden border-none shadow-2xl">
         <Spotlight
           className="-top-40 left-0 md:left-60 md:-top-20"
           fill="white"
@@ -58,7 +58,7 @@ const About = () => {
                 href="https://drive.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-6 py-2 mt-8 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-all text-sm"
+                className="inline-block px-4 py-2 mt-8 bg-white text-black rounded-full font-medium hover:bg-gray-200 transition-all text-sm"
               >
                 Download CV
               </a>
@@ -74,15 +74,16 @@ const About = () => {
       </Card>
 
       {/* About Me Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <motion.div
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="relative overflow-hidden rounded-lg"
+          className="relative overflow-hidden rounded-lg md:col-span-1"
+          onClick={() => setShowAboutDialog(true)}
         >
-          <Card className="h-full">
+          <Card className="h-[300px]">
             <img
-              src="/lovable-uploads/480b2902-c376-44ec-8f23-b3430b4d69be.png"
+              src="/lovable-uploads/1d769ae6-56df-451f-af6b-3cd746a40cbb.png"
               alt="Profile"
               className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
             />
@@ -92,9 +93,9 @@ const About = () => {
         <motion.div
           whileHover={{ scale: 1.02 }}
           onClick={() => setShowAboutDialog(true)}
-          className="cursor-pointer"
+          className="cursor-pointer md:col-span-2"
         >
-          <Card className="h-full p-6 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors">
+          <Card className="h-[300px] p-6 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors">
             <h2 className="text-3xl font-bold mb-4">About Me</h2>
             <p className="text-gray-600 dark:text-gray-400">
               I am an enthusiastic student eager to explore the diverse fields of industry related to data, management
@@ -113,10 +114,6 @@ const About = () => {
             and engineering. I like working in a challenging and dynamic environment, exploring new opportunities on
             a daily basis. I love meeting and communicating with diverse people and would emerge as a key team
             player at workplace.
-            
-            My passion for technology and continuous learning drives me to stay updated with the latest industry trends
-            and best practices. I believe in the power of collaboration and innovation to create meaningful solutions
-            that make a difference.
           </p>
         </DialogContent>
       </Dialog>

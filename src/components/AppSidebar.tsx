@@ -17,27 +17,27 @@ const AppSidebar = () => {
     {
       label: "About",
       href: "/about",
-      icon: <User2 className="text-neutral-700 dark:text-neutral-200 h-5 w-5" />,
+      icon: <User2 className="h-5 w-5" />,
     },
     {
       label: "Education",
       href: "/education",
-      icon: <GraduationCap className="text-neutral-700 dark:text-neutral-200 h-5 w-5" />,
+      icon: <GraduationCap className="h-5 w-5" />,
     },
     {
       label: "Skills",
       href: "/skills",
-      icon: <Briefcase className="text-neutral-700 dark:text-neutral-200 h-5 w-5" />,
+      icon: <Briefcase className="h-5 w-5" />,
     },
     {
       label: "Projects",
       href: "/projects",
-      icon: <FolderKanban className="text-neutral-700 dark:text-neutral-200 h-5 w-5" />,
+      icon: <FolderKanban className="h-5 w-5" />,
     },
     {
       label: "Contact",
       href: "/contact",
-      icon: <Mail className="text-neutral-700 dark:text-neutral-200 h-5 w-5" />,
+      icon: <Mail className="h-5 w-5" />,
     },
   ];
 
@@ -46,9 +46,9 @@ const AppSidebar = () => {
       <SidebarBody className="flex flex-col gap-4">
         <Link to="/" className="flex items-center justify-center p-2">
           <motion.img
-            src="/lovable-uploads/480b2902-c376-44ec-8f23-b3430b4d69be.png"
+            src="/lovable-uploads/1d769ae6-56df-451f-af6b-3cd746a40cbb.png"
             alt="Logo"
-            className="w-12 h-12 rounded-full"
+            className="h-8 w-auto"
             whileHover={{ scale: 1.1 }}
           />
         </Link>
@@ -57,10 +57,12 @@ const AppSidebar = () => {
             <Link
               key={idx}
               to={link.href}
-              className="flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+              className="flex items-center gap-2 p-2 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground rounded-lg transition-colors"
             >
               {link.icon}
-              <span className="text-sm">{link.label}</span>
+              <span className={`text-sm transition-opacity duration-200 ${open ? 'opacity-100' : 'opacity-0 md:hidden'}`}>
+                {link.label}
+              </span>
             </Link>
           ))}
         </div>
