@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { 
   Sidebar, 
-  SidebarBody, 
+  SidebarBody,
   SidebarLink,
   SidebarProvider
 } from "@/components/ui/sidebar";
@@ -16,6 +16,8 @@ import {
 
 const AppSidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   const links = [
     {
@@ -45,26 +47,28 @@ const AppSidebar = () => {
     },
   ];
 
-  // Don't show sidebar on landing page
   if (location.pathname === '/') {
     return null;
   }
 
   return (
-    <SidebarProvider>
-      <Sidebar>
-        <SidebarBody className="justify-between gap-10">
-          <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-            <div className="text-xl font-bold p-2">TB</div>
-            <div className="mt-8 flex flex-col gap-2">
-              {links.map((link, idx) => (
-                <SidebarLink key={idx} link={link} />
-              ))}
-            </div>
+    <Sidebar open={open} setOpen={setOpen}>
+      <SidebarBody className="justify-between gap-10">
+        <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+          <div 
+            className="text-xl font-bold p-2 cursor-pointer hover:text-primary transition-colors"
+            onClick={() => navigate('/')}
+          >
+            TB
           </div>
-        </SidebarBody>
-      </Sidebar>
-    </SidebarProvider>
+          <div className="mt-8 flex flex-col gap-2">
+            {links.map((link, idx) => (
+              <SidebarLink key={idx} link={link} />
+            ))}
+          </div>
+        </div>
+      </SidebarBody>
+    </Sidebar>
   );
 };
 
