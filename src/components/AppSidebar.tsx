@@ -1,71 +1,68 @@
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Sidebar, SidebarBody } from "@/components/ui/sidebar";
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import { 
-  Sidebar, 
-  SidebarBody,
-  SidebarLink,
-  SidebarProvider
-} from "@/components/ui/sidebar";
-import { 
-  UserCircle2, 
+  User2, 
   GraduationCap, 
-  Code2, 
+  Briefcase, 
   FolderKanban,
   Mail
 } from "lucide-react";
 
 const AppSidebar = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
   const links = [
     {
       label: "About",
       href: "/about",
-      icon: <UserCircle2 className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
+      icon: <User2 className="text-neutral-700 dark:text-neutral-200 h-5 w-5" />,
     },
     {
       label: "Education",
       href: "/education",
-      icon: <GraduationCap className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
+      icon: <GraduationCap className="text-neutral-700 dark:text-neutral-200 h-5 w-5" />,
     },
     {
       label: "Skills",
       href: "/skills",
-      icon: <Code2 className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
+      icon: <Briefcase className="text-neutral-700 dark:text-neutral-200 h-5 w-5" />,
     },
     {
       label: "Projects",
       href: "/projects",
-      icon: <FolderKanban className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
+      icon: <FolderKanban className="text-neutral-700 dark:text-neutral-200 h-5 w-5" />,
     },
     {
       label: "Contact",
       href: "/contact",
-      icon: <Mail className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
+      icon: <Mail className="text-neutral-700 dark:text-neutral-200 h-5 w-5" />,
     },
   ];
 
-  if (location.pathname === '/') {
-    return null;
-  }
-
   return (
-    <Sidebar open={open} setOpen={setOpen}>
-      <SidebarBody className="justify-between gap-10">
-        <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-          <div 
-            className="text-xl font-bold p-2 cursor-pointer hover:text-primary transition-colors"
-            onClick={() => navigate('/')}
-          >
-            TB
-          </div>
-          <div className="mt-8 flex flex-col gap-2">
-            {links.map((link, idx) => (
-              <SidebarLink key={idx} link={link} />
-            ))}
-          </div>
+    <Sidebar>
+      <SidebarBody className="flex flex-col gap-4">
+        <Link to="/" className="flex items-center justify-center p-2">
+          <motion.img
+            src="/lovable-uploads/480b2902-c376-44ec-8f23-b3430b4d69be.png"
+            alt="Logo"
+            className="w-12 h-12 rounded-full"
+            whileHover={{ scale: 1.1 }}
+          />
+        </Link>
+        <div className="flex flex-col gap-2">
+          {links.map((link, idx) => (
+            <Link
+              key={idx}
+              to={link.href}
+              className="flex items-center gap-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+            >
+              {link.icon}
+              <span className="text-sm">{link.label}</span>
+            </Link>
+          ))}
         </div>
       </SidebarBody>
     </Sidebar>
