@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 
 const AppSidebar = () => {
-  const [open, setOpen] = useState(false);
   const location = useLocation();
 
   const links = [
@@ -52,7 +51,7 @@ const AppSidebar = () => {
   }
 
   return (
-    <SidebarProvider defaultOpen={false}>
+    <SidebarProvider>
       <Sidebar>
         <SidebarBody className="justify-between gap-10">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">

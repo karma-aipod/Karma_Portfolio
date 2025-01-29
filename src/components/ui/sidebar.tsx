@@ -1,133 +1,103 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { VariantProps, cva } from "class-variance-authority"
-import { Menu, X } from "lucide-react"
-import { AnimatePresence, motion } from "framer-motion"
-import { useIsMobile } from "@/hooks/use-mobile"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent } from "@/components/ui/sheet"
+import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
+import React, { useState, createContext, useContext } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
-interface SidebarContext {
+interface Links {
+  label: string;
+  href: string;
+  icon: React.ReactNode;
+}
+
+interface SidebarContextProps {
   open: boolean;
-  setOpen: (open: boolean) => void;
-  isMobile: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  animate: boolean;
 }
 
-const SidebarContext = React.createContext<SidebarContext | null>(null)
+const SidebarContext = createContext<SidebarContextProps | undefined>(undefined);
 
-function useSidebar() {
-  const context = React.useContext(SidebarContext)
+export const useSidebar = () => {
+  const context = useContext(SidebarContext);
   if (!context) {
-    throw new Error("useSidebar must be used within a SidebarProvider")
+    throw new Error("useSidebar must be used within a SidebarProvider");
   }
-  return context
-}
+  return context;
+};
 
-export const SidebarProvider = ({ 
+export const SidebarProvider = ({
   children,
-  defaultOpen = true,
-}: { 
+  defaultOpen = false,
+}: {
   children: React.ReactNode;
   defaultOpen?: boolean;
 }) => {
-  const isMobile = useIsMobile()
-  const [open, setOpen] = React.useState(defaultOpen)
-  const [openMobile, setOpenMobile] = React.useState(false)
-
-  const contextValue = React.useMemo(() => ({
-    open,
-    setOpen,
-    isMobile
-  }), [open, isMobile])
+  const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <SidebarContext.Provider value={contextValue}>
+    <SidebarContext.Provider value={{ open, setOpen, animate: true }}>
       {children}
     </SidebarContext.Provider>
-  )
-}
+  );
+};
 
-export const Sidebar = ({
-  children,
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
-  const { isMobile, open, setOpen } = useSidebar()
-
-  if (isMobile) {
-    return (
-      <Sheet open={open} onOpenChange={setOpen}>
-        <SheetContent side="left" className="p-0">
-          <div className="flex h-full flex-col" {...props}>
-            {children}
-          </div>
-        </SheetContent>
-      </Sheet>
-    )
-  }
-
-  return (
-    <div
-      className={cn(
-        "flex h-screen w-[300px] flex-col border-r bg-background",
-        !open && "w-[60px]",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </div>
-  )
-}
+export const Sidebar = ({ children }: { children: React.ReactNode }) => {
+  return <>{children}</>;
+};
 
 export const SidebarBody = ({
-  children,
   className,
+  children,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
-  return (
-    <div
-      className={cn("flex flex-1 flex-col gap-4 p-4", className)}
-      {...props}
-    >
-      {children}
-    </div>
-  )
-}
+}: React.ComponentProps<"div">) => {
+  const { open, setOpen } = useSidebar();
 
-interface SidebarLinkProps {
-  link: {
-    label: string;
-    href: string;
-    icon: React.ReactNode;
-  };
-  className?: string;
-}
-
-export const SidebarLink = ({ link, className }: SidebarLinkProps) => {
-  const { open } = useSidebar()
-  
   return (
     <motion.div
       className={cn(
-        "flex items-center gap-2 rounded-lg px-2 py-2 hover:bg-accent",
+        "h-full px-4 py-4 flex flex-col bg-sidebar-background border-r border-sidebar-border w-[300px] flex-shrink-0",
         className
       )}
-      whileHover={{ scale: 1.02 }}
+      animate={{
+        width: open ? "300px" : "60px",
+      }}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      {...props}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+export const SidebarLink = ({
+  link,
+  className,
+}: {
+  link: Links;
+  className?: string;
+}) => {
+  const { open } = useSidebar();
+
+  return (
+    <Link
+      to={link.href}
+      className={cn(
+        "flex items-center gap-2 rounded-lg px-2 py-2 text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors",
+        className
+      )}
     >
       {link.icon}
       {open && (
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-sm"
+          className="text-sm whitespace-pre"
         >
           {link.label}
         </motion.span>
       )}
-    </motion.div>
-  )
-}
-
-export { useSidebar }
+    </Link>
+  );
+};
