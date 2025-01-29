@@ -3,7 +3,8 @@ import { useLocation } from "react-router-dom";
 import { 
   Sidebar, 
   SidebarBody, 
-  SidebarLink 
+  SidebarLink,
+  SidebarProvider
 } from "@/components/ui/sidebar";
 import { 
   UserCircle2, 
@@ -51,18 +52,20 @@ const AppSidebar = () => {
   }
 
   return (
-    <Sidebar open={open} setOpen={setOpen}>
-      <SidebarBody className="justify-between gap-10">
-        <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-          <div className="text-xl font-bold p-2">TB</div>
-          <div className="mt-8 flex flex-col gap-2">
-            {links.map((link, idx) => (
-              <SidebarLink key={idx} link={link} />
-            ))}
+    <SidebarProvider defaultOpen={false}>
+      <Sidebar>
+        <SidebarBody className="justify-between gap-10">
+          <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+            <div className="text-xl font-bold p-2">TB</div>
+            <div className="mt-8 flex flex-col gap-2">
+              {links.map((link, idx) => (
+                <SidebarLink key={idx} link={link} />
+              ))}
+            </div>
           </div>
-        </div>
-      </SidebarBody>
-    </Sidebar>
+        </SidebarBody>
+      </Sidebar>
+    </SidebarProvider>
   );
 };
 
