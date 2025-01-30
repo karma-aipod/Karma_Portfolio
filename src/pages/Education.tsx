@@ -54,9 +54,10 @@ const Journey = () => {
                   transition={{ duration: 0.5 }}
                   className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'} mb-12`}
                 >
-                  <Card className="w-[300px] p-6 hover:shadow-xl transition-shadow cursor-pointer">
-                    <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white"
-                         style={{ [index % 2 === 0 ? 'right' : 'left']: '-42px' }}
+                  <Card className="w-[300px] p-6 hover:shadow-xl transition-shadow cursor-pointer bg-white/80 backdrop-blur-sm">
+                    <div 
+                      className="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow-lg"
+                      style={{ [index % 2 === 0 ? 'right' : 'left']: '-42px' }}
                     />
                     <h3 className="text-2xl font-bold text-blue-500">{item.year}</h3>
                     <h4 className="text-xl font-semibold mt-2">{item.title}</h4>

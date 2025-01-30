@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Sidebar, SidebarBody } from "@/components/ui/sidebar";
-import { useState } from "react";
+import { useSidebar } from "@/components/ui/sidebar";
 import { 
   User2, 
   GraduationCap, 
@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 const AppSidebar = () => {
-  const [open, setOpen] = useState(false);
+  const { open } = useSidebar();
 
   const links = [
     {
@@ -43,11 +43,7 @@ const AppSidebar = () => {
 
   return (
     <Sidebar>
-      <SidebarBody 
-        className="flex flex-col gap-4 bg-sidebar-background text-sidebar-foreground"
-        onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
-      >
+      <SidebarBody className="flex flex-col gap-4">
         {open && (
           <Link to="/" className="flex items-center justify-center p-2">
             <motion.img
@@ -63,7 +59,7 @@ const AppSidebar = () => {
             <Link
               key={idx}
               to={link.href}
-              className="flex items-center gap-2 p-2 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground rounded-lg transition-colors"
+              className="flex items-center gap-2 p-2 hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors text-foreground"
             >
               {link.icon}
               {open && (
