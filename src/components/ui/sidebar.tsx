@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import React, { useState, createContext, useContext } from "react";
-import { motion } from "framer-motion";
+import { motion, HTMLMotionProps } from "framer-motion";
 
 interface SidebarContextProps {
   open: boolean;
@@ -41,7 +41,7 @@ export const SidebarBody = ({
   className,
   children,
   ...props
-}: React.ComponentProps<"div">) => {
+}: HTMLMotionProps<"div">) => {
   const { open, setOpen } = useSidebar();
 
   return (

@@ -7,7 +7,7 @@ import { SidebarProvider } from "./components/ui/sidebar";
 import Landing from "./pages/Landing";
 import Portfolio from "./pages/Portfolio";
 import About from "./pages/About";
-import Journey from "./pages/Education";
+import Journey from "./pages/Journey";
 import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
