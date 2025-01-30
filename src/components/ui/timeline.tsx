@@ -7,7 +7,7 @@ interface TimelineEntry {
   title: string;
   description: string;
   details: string;
-  image?: string;
+  content?: React.ReactNode;
 }
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {

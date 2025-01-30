@@ -11,57 +11,117 @@ const Journey = () => {
     {
       year: "2000",
       title: "Early Years",
-      tabs: [
-        {
-          title: "Birth",
-          content: "Born in [Your Birthplace]",
-          image: "/lovable-uploads/placeholder.jpg"
-        },
-        {
-          title: "Childhood",
-          content: "Early childhood memories and achievements",
-          image: "/lovable-uploads/placeholder.jpg"
-        }
-      ]
+      description: "The beginning of my journey",
+      details: "A detailed look at my early years",
+      content: (
+        <Card className="w-full p-6 hover:shadow-xl transition-shadow">
+          <Tabs defaultValue="birth" className="w-full">
+            <TabsList className="w-full justify-start mb-4">
+              <TabsTrigger value="birth">Birth</TabsTrigger>
+              <TabsTrigger value="childhood">Childhood</TabsTrigger>
+            </TabsList>
+            <TabsContent value="birth">
+              <div className="space-y-4">
+                <p className="text-muted-foreground">Born in [Your Birthplace]</p>
+                <img 
+                  src="/lovable-uploads/placeholder.jpg" 
+                  alt="Birth"
+                  className="rounded-lg w-full h-48 object-cover"
+                />
+              </div>
+            </TabsContent>
+            <TabsContent value="childhood">
+              <div className="space-y-4">
+                <p className="text-muted-foreground">Early childhood memories and achievements</p>
+                <img 
+                  src="/lovable-uploads/placeholder.jpg" 
+                  alt="Childhood"
+                  className="rounded-lg w-full h-48 object-cover"
+                />
+              </div>
+            </TabsContent>
+          </Tabs>
+        </Card>
+      )
     },
     {
       year: "2015",
       title: "Academic Journey",
-      tabs: [
-        {
-          title: "High School",
-          content: "Started High School with focus on sciences",
-          image: "/lovable-uploads/placeholder.jpg"
-        },
-        {
-          title: "Achievements",
-          content: "Won several academic competitions",
-          image: "/lovable-uploads/placeholder.jpg"
-        }
-      ]
+      description: "The pivotal years of my education",
+      details: "A detailed look at my academic achievements",
+      content: (
+        <Card className="w-full p-6 hover:shadow-xl transition-shadow">
+          <Tabs defaultValue="highSchool" className="w-full">
+            <TabsList className="w-full justify-start mb-4">
+              <TabsTrigger value="highSchool">High School</TabsTrigger>
+              <TabsTrigger value="achievements">Achievements</TabsTrigger>
+            </TabsList>
+            <TabsContent value="highSchool">
+              <div className="space-y-4">
+                <p className="text-muted-foreground">Started High School with focus on sciences</p>
+                <img 
+                  src="/lovable-uploads/placeholder.jpg" 
+                  alt="High School"
+                  className="rounded-lg w-full h-48 object-cover"
+                />
+              </div>
+            </TabsContent>
+            <TabsContent value="achievements">
+              <div className="space-y-4">
+                <p className="text-muted-foreground">Won several academic competitions</p>
+                <img 
+                  src="/lovable-uploads/placeholder.jpg" 
+                  alt="Achievements"
+                  className="rounded-lg w-full h-48 object-cover"
+                />
+              </div>
+            </TabsContent>
+          </Tabs>
+        </Card>
+      )
     },
     {
       year: "2019",
       title: "Higher Education",
-      tabs: [
-        {
-          title: "University",
-          content: "Began Computer Science degree",
-          image: "/lovable-uploads/placeholder.jpg"
-        },
-        {
-          title: "Projects",
-          content: "Worked on various coding projects",
-          image: "/lovable-uploads/placeholder.jpg"
-        }
-      ]
+      description: "The start of my university journey",
+      details: "A detailed look at my university projects",
+      content: (
+        <Card className="w-full p-6 hover:shadow-xl transition-shadow">
+          <Tabs defaultValue="university" className="w-full">
+            <TabsList className="w-full justify-start mb-4">
+              <TabsTrigger value="university">University</TabsTrigger>
+              <TabsTrigger value="projects">Projects</TabsTrigger>
+            </TabsList>
+            <TabsContent value="university">
+              <div className="space-y-4">
+                <p className="text-muted-foreground">Began Computer Science degree</p>
+                <img 
+                  src="/lovable-uploads/placeholder.jpg" 
+                  alt="University"
+                  className="rounded-lg w-full h-48 object-cover"
+                />
+              </div>
+            </TabsContent>
+            <TabsContent value="projects">
+              <div className="space-y-4">
+                <p className="text-muted-foreground">Worked on various coding projects</p>
+                <img 
+                  src="/lovable-uploads/placeholder.jpg" 
+                  alt="Projects"
+                  className="rounded-lg w-full h-48 object-cover"
+                />
+              </div>
+            </TabsContent>
+          </Tabs>
+        </Card>
+      )
     }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-      {/* 3D Hero Section */}
-      <div className="relative min-h-[60vh] flex items-center justify-center perspective-1000">
+      {/* Hero Section */}
+      <div className="relative min-h-[60vh] flex items-center justify-center">
         <motion.div 
           className="w-full max-w-4xl"
           initial={{ rotateX: 20 }}
@@ -88,67 +148,7 @@ const Journey = () => {
 
       {/* Timeline Section */}
       <div className="relative z-10 -mt-20">
-        <Timeline data={journeyData.map(item => ({
-          year: item.year,
-          title: item.title,
-          content: (
-            <Dialog>
-              <DialogTrigger>
-                <Card className="w-full p-6 hover:shadow-xl transition-shadow">
-                  <Tabs defaultValue={item.tabs[0].title} className="w-full">
-                    <TabsList className="w-full justify-start mb-4">
-                      {item.tabs.map(tab => (
-                        <TabsTrigger key={tab.title} value={tab.title}>
-                          {tab.title}
-                        </TabsTrigger>
-                      ))}
-                    </TabsList>
-                    {item.tabs.map(tab => (
-                      <TabsContent key={tab.title} value={tab.title} className="mt-0">
-                        <div className="space-y-4">
-                          <p className="text-muted-foreground">{tab.content}</p>
-                          {tab.image && (
-                            <img 
-                              src={tab.image} 
-                              alt={tab.title} 
-                              className="rounded-lg w-full h-48 object-cover"
-                            />
-                          )}
-                        </div>
-                      </TabsContent>
-                    ))}
-                  </Tabs>
-                </Card>
-              </DialogTrigger>
-              <DialogContent className="max-w-2xl">
-                <Tabs defaultValue={item.tabs[0].title} className="w-full">
-                  <TabsList className="w-full justify-start mb-4">
-                    {item.tabs.map(tab => (
-                      <TabsTrigger key={tab.title} value={tab.title}>
-                        {tab.title}
-                      </TabsTrigger>
-                    ))}
-                  </TabsList>
-                  {item.tabs.map(tab => (
-                    <TabsContent key={tab.title} value={tab.title}>
-                      <div className="space-y-4">
-                        <h3 className="text-2xl font-bold">{item.title} - {tab.title}</h3>
-                        <p className="text-muted-foreground">{tab.content}</p>
-                        {tab.image && (
-                          <img 
-                            src={tab.image} 
-                            alt={tab.title} 
-                            className="rounded-lg w-full"
-                          />
-                        )}
-                      </div>
-                    </TabsContent>
-                  ))}
-                </Tabs>
-              </DialogContent>
-            </Dialog>
-          )
-        }))} />
+        <Timeline data={journeyData} />
       </div>
     </div>
   );
