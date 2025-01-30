@@ -8,6 +8,7 @@ interface TimelineEntry {
   description: string;
   details: string;
   content?: React.ReactNode;
+  image?: string; // Added image property as optional
 }
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
@@ -53,6 +54,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                 {item.image && (
                   <img src={item.image} alt={item.title} className="mt-4 rounded-lg w-full h-48 object-cover" />
                 )}
+                {item.content}
               </div>
             </div>
           </div>
