@@ -7,7 +7,7 @@ import { SidebarProvider } from "./components/ui/sidebar";
 import Landing from "./pages/Landing";
 import Portfolio from "./pages/Portfolio";
 import About from "./pages/About";
-import Education from "./pages/Education";
+import Journey from "./pages/Education";
 import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
@@ -35,7 +35,7 @@ function App() {
                       <main className="flex-1">
                         <Routes>
                           <Route path="/about" element={<About />} />
-                          <Route path="/education" element={<Education />} />
+                          <Route path="/education" element={<Journey />} />
                           <Route path="/skills" element={<Skills />} />
                           <Route path="/projects" element={<Projects />} />
                           <Route path="/contact" element={<Contact />} />

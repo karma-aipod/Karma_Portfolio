@@ -20,7 +20,7 @@ const AppSidebar = () => {
       icon: <User2 className="h-5 w-5" />,
     },
     {
-      label: "Education",
+      label: "Journey",
       href: "/education",
       icon: <GraduationCap className="h-5 w-5" />,
     },
@@ -43,15 +43,21 @@ const AppSidebar = () => {
 
   return (
     <Sidebar>
-      <SidebarBody className="flex flex-col gap-4">
-        <Link to="/" className="flex items-center justify-center p-2">
-          <motion.img
-            src="/lovable-uploads/1d769ae6-56df-451f-af6b-3cd746a40cbb.png"
-            alt="Logo"
-            className="h-8 w-auto"
-            whileHover={{ scale: 1.1 }}
-          />
-        </Link>
+      <SidebarBody 
+        className="flex flex-col gap-4 bg-sidebar-background text-sidebar-foreground"
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+      >
+        {open && (
+          <Link to="/" className="flex items-center justify-center p-2">
+            <motion.img
+              src="/lovable-uploads/1d769ae6-56df-451f-af6b-3cd746a40cbb.png"
+              alt="Logo"
+              className="h-8 w-auto"
+              whileHover={{ scale: 1.1 }}
+            />
+          </Link>
+        )}
         <div className="flex flex-col gap-2">
           {links.map((link, idx) => (
             <Link
@@ -60,9 +66,11 @@ const AppSidebar = () => {
               className="flex items-center gap-2 p-2 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground rounded-lg transition-colors"
             >
               {link.icon}
-              <span className={`text-sm transition-opacity duration-200 ${open ? 'opacity-100' : 'opacity-0 md:hidden'}`}>
-                {link.label}
-              </span>
+              {open && (
+                <span className="text-sm transition-opacity duration-200">
+                  {link.label}
+                </span>
+              )}
             </Link>
           ))}
         </div>
