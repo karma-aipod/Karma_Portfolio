@@ -1,106 +1,109 @@
-import { motion } from "framer-motion";
-import { Timeline } from "@/components/ui/timeline";
-import { Card } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 import { MorphingText } from "@/components/ui/morphing-text";
+import { motion } from "framer-motion";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
+const timelineEvents = [
+  {
+    year: "2000",
+    title: "Born",
+    description: "Started my journey in this world",
+    image: "/lovable-uploads/placeholder.svg"
+  },
+  {
+    year: "2016",
+    title: "Finished 10th Grade",
+    description: "Completed my secondary education",
+    image: "/lovable-uploads/placeholder.svg"
+  },
+  {
+    year: "2018",
+    title: "Finished 12th Grade",
+    description: "Completed my higher secondary education",
+    image: "/lovable-uploads/placeholder.svg"
+  },
+  {
+    year: "2019",
+    title: "Started College",
+    description: "Began my journey in higher education",
+    image: "/lovable-uploads/placeholder.svg"
+  },
+  {
+    year: "2023",
+    title: "Graduated College",
+    description: "Successfully completed my degree",
+    image: "/lovable-uploads/placeholder.svg"
+  },
+  {
+    year: "2023",
+    title: "First Job",
+    description: "Started and completed my first professional experience",
+    image: "/lovable-uploads/placeholder.svg"
+  }
+];
+
 const Journey = () => {
-  const journeyData = [
-    {
-      year: "2000",
-      title: "Born",
-      description: "Started my journey in this world",
-      details: "Born in a beautiful day",
-      image: "/lovable-uploads/d5a2c8c2-492b-4128-b7d3-65b94deb152b.png"
-    },
-    {
-      year: "2016",
-      title: "10th Grade",
-      description: "Completed Secondary Education",
-      details: "Finished my 10th grade with excellent grades",
-      image: "/lovable-uploads/d5a2c8c2-492b-4128-b7d3-65b94deb152b.png"
-    },
-    {
-      year: "2018",
-      title: "12th Grade",
-      description: "Completed Higher Secondary",
-      details: "Successfully completed 12th grade",
-      image: "/lovable-uploads/d5a2c8c2-492b-4128-b7d3-65b94deb152b.png"
-    },
-    {
-      year: "2019",
-      title: "College Journey Begins",
-      description: "Started College Education",
-      details: "Embarked on my college journey",
-      image: "/lovable-uploads/d5a2c8c2-492b-4128-b7d3-65b94deb152b.png"
-    },
-    {
-      year: "2023",
-      title: "Graduation",
-      description: "Completed College Education",
-      details: "Successfully graduated from college",
-      image: "/lovable-uploads/d5a2c8c2-492b-4128-b7d3-65b94deb152b.png"
-    },
-    {
-      year: "2023",
-      title: "First Job",
-      description: "Started Professional Career",
-      details: "Joined my first company and gained valuable experience",
-      image: "/lovable-uploads/d5a2c8c2-492b-4128-b7d3-65b94deb152b.png"
-    }
-  ];
-
-  const morphingTexts = [
-    "My Journey",
-    "Through Time",
-    "Life Events",
-    "Milestones",
-    "Achievements"
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-      <div className="max-w-5xl mx-auto px-4 py-8">
-        {/* 3D Tab Hero Section */}
-        <div className="relative min-h-[40vh] flex items-center justify-center perspective-1000 mb-16">
-          <motion.div 
-            initial={{ rotateX: 20, opacity: 0 }}
-            animate={{ rotateX: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="w-full transform-gpu"
-          >
-            <Card className="p-8 bg-white/10 backdrop-blur-md border-none shadow-2xl">
-              <MorphingText texts={morphingTexts} />
-            </Card>
-          </motion.div>
-        </div>
-
-        {/* Velocity Scroll Divider */}
-        <div className="h-32 overflow-hidden mb-8">
-          <VelocityScroll 
-            text="MY JOURNEY THROUGH TIME • MY JOURNEY THROUGH TIME •" 
-            default_velocity={3}
-            className="text-primary/50 font-bold"
+    <div className="min-h-screen bg-background">
+      <div className="max-w-5xl mx-auto px-4 py-24">
+        {/* Hero Section with Morphing Text */}
+        <div className="mb-16">
+          <MorphingText
+            texts={[
+              "My Journey",
+              "My Story",
+              "My Path",
+              "My Adventure",
+              "My Experience"
+            ]}
           />
         </div>
 
-        {/* Journey Description */}
-        <motion.div
+        {/* Description */}
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-xl text-center text-muted-foreground mb-16"
         >
-          <p className="text-xl text-muted-foreground">
-            This is how my journey looks like, hope you like it.
-          </p>
-        </motion.div>
+          This is how my journey looks like, hope you like it.
+        </motion.p>
 
-        {/* Timeline Section */}
-        <div className="relative z-10">
-          <Timeline data={journeyData} />
+        {/* Timeline */}
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-1/4 transform -translate-x-1/2 w-0.5 h-full bg-border" />
+
+          {/* Timeline events */}
+          {timelineEvents.map((event, index) => (
+            <motion.div
+              key={`${event.year}-${index}`}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.2 }}
+              className="flex mb-12"
+            >
+              <div className="w-1/4 text-right pr-8">
+                <span className="text-2xl font-bold">{event.year}</span>
+              </div>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="w-3/4 pl-8 bg-card rounded-lg p-6 shadow-lg cursor-pointer"
+                  >
+                    <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
+                    <p className="text-muted-foreground">{event.description}</p>
+                  </motion.div>
+                </DialogTrigger>
+                <DialogContent>
+                  <div className="space-y-4">
+                    <img src={event.image} alt={event.title} className="w-full rounded-lg" />
+                    <h3 className="text-2xl font-bold">{event.title}</h3>
+                    <p className="text-muted-foreground">{event.description}</p>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>

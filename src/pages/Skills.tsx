@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Gravity, MatterBody } from "@/components/ui/gravity";
 
@@ -23,7 +22,7 @@ const Skills = () => {
       <div className="container mx-auto px-6">
         <Card className="w-full min-h-[500px] relative overflow-hidden mb-12">
           <Gravity gravity={{ x: 0, y: 1 }} className="w-full h-full">
-            {skills.map((category, idx) => 
+            {skills.map((category, idx) =>
               category.items.map((skill, skillIdx) => (
                 <MatterBody
                   key={`${idx}-${skillIdx}`}

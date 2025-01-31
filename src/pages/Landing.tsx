@@ -52,7 +52,7 @@ const Landing = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => navigate("/portfolio")}
+            onClick={() => navigate("/about")}
             className="px-8 py-3 border-2 border-gray-900 text-gray-900 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-all"
           >
             GET STARTED
