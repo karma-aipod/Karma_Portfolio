@@ -11,7 +11,7 @@ const Landing = () => {
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-1/2 h-screen relative"
+        className="w-1/2 h-full relative"
       >
         <img
           src="/lovable-uploads/c89c229d-4bfc-4750-aaa3-a1f29cf5d482.png"
@@ -28,6 +28,15 @@ const Landing = () => {
         className="w-1/2 flex items-center justify-center p-8"
       >
         <div className="max-w-xl">
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="text-sm uppercase tracking-wider text-gray-500 mb-4 block"
+          >
+            WELCOME TO MY WEBSITE
+          </motion.span>
+          
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -52,7 +61,7 @@ const Landing = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => navigate("/about")}
+            onClick={() => navigate("/portfolio")}
             className="px-8 py-3 border-2 border-gray-900 text-gray-900 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-all"
           >
             GET STARTED
