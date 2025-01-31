@@ -8,7 +8,7 @@ interface TimelineEntry {
   description: string;
   details: string;
   content?: React.ReactNode;
-  image?: string; // Added image property as optional
+  image?: string;
 }
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
@@ -32,36 +32,49 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div className="w-full bg-white font-sans md:px-10" ref={containerRef}>
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+    <div className="w-full bg-white font-sans" ref={containerRef}>
+      <div ref={ref} className="relative max-w-4xl mx-auto pb-20">
         {data.map((item, index) => (
-          <div key={index} className="flex justify-start pt-10 md:pt-40 md:gap-10">
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-blue-500 border border-blue-300 p-2" />
-              </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-blue-500">
+          <div key={index} className="flex justify-between pt-10 md:pt-40">
+            {/* Year Column */}
+            <div className="w-1/4 sticky top-40 self-start">
+              <motion.h3 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-4xl font-bold text-blue-500"
+              >
                 {item.year}
-              </h3>
+              </motion.h3>
             </div>
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-blue-500">
-                {item.year}
-              </h3>
-              <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-lg">
+            
+            {/* Content Column */}
+            <div className="w-3/4 relative pl-8">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-lg"
+              >
                 <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
-                <p className="text-gray-600">{item.description}</p>
+                <p className="text-gray-600 mb-4">{item.description}</p>
                 {item.image && (
-                  <img src={item.image} alt={item.title} className="mt-4 rounded-lg w-full h-48 object-cover" />
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="w-full h-48 object-cover rounded-lg mb-4" 
+                  />
                 )}
                 {item.content}
-              </div>
+              </motion.div>
             </div>
           </div>
         ))}
+        
+        {/* Timeline Line */}
         <div
           style={{ height: height + "px" }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-blue-200 to-transparent"
+          className="absolute left-1/4 top-0 ml-[-1px] w-[2px] bg-gradient-to-b from-transparent via-blue-200 to-transparent"
         >
           <motion.div
             style={{

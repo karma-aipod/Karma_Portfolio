@@ -5,7 +5,7 @@ const Landing = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen flex bg-gray-50">
+    <div className="h-screen flex bg-gray-50 overflow-hidden">
       {/* Left side - Image */}
       <motion.div 
         initial={{ opacity: 0, x: -50 }}
