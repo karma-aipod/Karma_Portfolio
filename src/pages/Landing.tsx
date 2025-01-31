@@ -5,7 +5,7 @@ const Landing = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen flex bg-gray-50 overflow-hidden">
+    <div className="h-screen w-screen flex overflow-hidden">
       {/* Left side - Image */}
       <motion.div 
         initial={{ opacity: 0, x: -50 }}
@@ -61,10 +61,10 @@ const Landing = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => navigate("/portfolio")}
+            onClick={() => navigate("/journey")}
             className="px-8 py-3 border-2 border-gray-900 text-gray-900 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-all"
           >
-            GET STARTED
+            VIEW MY JOURNEY
           </motion.button>
         </div>
       </motion.div>
