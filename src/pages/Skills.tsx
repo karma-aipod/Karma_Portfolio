@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { Gravity, MatterBody } from "@/components/ui/gravity";
 
 const Skills = () => {
   const skills = [
     {
-      category: "Programming Languages",
+      category: "Programming",
       items: ["JavaScript", "TypeScript", "Python", "Java", "C++"]
     },
     {
@@ -17,39 +19,29 @@ const Skills = () => {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="min-h-screen bg-gray-50 pt-24"
-    >
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 pt-24">
       <div className="container mx-auto px-6">
-        <h1 className="text-4xl font-bold text-center mb-12">Skills</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {skills.map((skillGroup, index) => (
-            <motion.div
-              key={skillGroup.category}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
-              className="bg-white rounded-lg shadow-lg p-6"
-            >
-              <h2 className="text-xl font-bold mb-4 text-gray-800">{skillGroup.category}</h2>
-              <div className="flex flex-wrap gap-2">
-                {skillGroup.items.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700"
-                  >
+        <Card className="w-full min-h-[500px] relative overflow-hidden mb-12">
+          <Gravity gravity={{ x: 0, y: 1 }} className="w-full h-full">
+            {skills.map((category, idx) => 
+              category.items.map((skill, skillIdx) => (
+                <MatterBody
+                  key={`${idx}-${skillIdx}`}
+                  matterBodyOptions={{ friction: 0.5, restitution: 0.2 }}
+                  x={`${(skillIdx * 20 + idx * 30) % 80 + 10}%`}
+                  y={`${(skillIdx * 15 + idx * 25) % 60 + 10}%`}
+                  angle={Math.random() * 20 - 10}
+                >
+                  <div className="text-lg sm:text-xl md:text-2xl bg-primary text-primary-foreground rounded-full hover:cursor-grab px-6 py-3">
                     {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                  </div>
+                </MatterBody>
+              ))
+            )}
+          </Gravity>
+        </Card>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
