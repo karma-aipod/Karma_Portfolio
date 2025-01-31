@@ -43,7 +43,7 @@ const AppSidebar = () => {
 
   return (
     <Sidebar>
-      <SidebarBody className="flex flex-col gap-4">
+      <SidebarBody className="flex flex-col gap-4 h-screen">
         {open && (
           <Link to="/" className="flex items-center justify-center p-2">
             <motion.img
@@ -54,7 +54,7 @@ const AppSidebar = () => {
             />
           </Link>
         )}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 flex-1">
           {links.map((link, idx) => (
             <Link
               key={idx}

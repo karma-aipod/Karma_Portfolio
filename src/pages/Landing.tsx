@@ -5,13 +5,13 @@ const Landing = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex bg-gray-50">
+    <div className="h-screen flex bg-gray-50">
       {/* Left side - Image */}
       <motion.div 
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-1/2 relative overflow-hidden"
+        className="w-1/2 h-full relative"
       >
         <img
           src="/lovable-uploads/c89c229d-4bfc-4750-aaa3-a1f29cf5d482.png"
@@ -25,7 +25,7 @@ const Landing = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-1/2 flex items-center justify-center p-12"
+        className="w-1/2 flex items-center justify-center p-8"
       >
         <div className="max-w-xl">
           <motion.span
