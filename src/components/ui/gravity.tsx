@@ -22,10 +22,10 @@ import Matter, {
   Runner,
   World,
 } from "matter-js"
+import decomp from "poly-decomp"
+import SVGPathCommander from 'svg-path-commander';
 
 import { cn } from "@/lib/utils"
-
-import SVGPathCommander from 'svg-path-commander';
 
 // Function to convert SVG path "d" to vertices
 function parsePathToVertices(path: string, sampleLength = 15) {
@@ -291,7 +291,7 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
       const height = canvas.current.offsetHeight
       const width = canvas.current.offsetWidth
 
-      Common.setDecomp(require("poly-decomp"))
+      Common.setDecomp(decomp)  // Changed from require to using the imported decomp
 
       engine.current.gravity.x = gravity.x
       engine.current.gravity.y = gravity.y
