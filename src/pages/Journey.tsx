@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { Timeline } from "@/components/ui/timeline";
 import { Card } from "@/components/ui/card";
 import { MorphingText } from "@/components/ui/morphing-text";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 
 const Journey = () => {
   const journeyData = [
@@ -11,6 +11,7 @@ const Journey = () => {
       title: "Born",
       description: "My journey begins",
       details: "Born in a loving family",
+      type: "image",
       image: "https://images.unsplash.com/photo-1492725764893-90b379c2b6e7",
     },
     {
@@ -18,13 +19,14 @@ const Journey = () => {
       title: "10th Grade",
       description: "Completed Secondary Education",
       details: "Finished my 10th grade with distinction",
-      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7",
+      type: "text",
     },
     {
       year: "2018",
       title: "12th Grade",
       description: "Completed Higher Secondary",
       details: "Graduated high school with focus on science",
+      type: "image",
       image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94",
     },
     {
@@ -32,13 +34,14 @@ const Journey = () => {
       title: "Started College",
       description: "Began University Journey",
       details: "Started pursuing Computer Science",
-      image: "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a",
+      type: "text",
     },
     {
       year: "2023",
       title: "Graduated College",
       description: "Completed Bachelor's Degree",
       details: "Graduated with honors in Computer Science",
+      type: "image",
       image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94",
     },
     {
@@ -46,56 +49,86 @@ const Journey = () => {
       title: "First Job",
       description: "Started Professional Career",
       details: "Joined and explored the corporate world",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+      type: "text",
     }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-      <div className="max-w-5xl mx-auto px-4 py-8">
-        {/* Hero Section with Morphing Text */}
-        <div className="mb-16">
-          <MorphingText 
-            texts={[
-              "My Journey",
-              "Through Time",
-              "Life Story",
-              "Milestones",
-              "Achievements"
-            ]} 
+      <div className="max-w-5xl mx-auto px-4 py-12">
+        {/* Hero Section with 3D Card */}
+        <motion.div 
+          className="mb-16 perspective-1000"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Card className="p-8 transform-gpu hover:rotate-x-12 transition-transform duration-500 bg-card/50 backdrop-blur-sm border-2">
+            <MorphingText 
+              texts={[
+                "My Journey",
+                "Through Time",
+                "Life Story",
+                "Milestones",
+                "Achievements"
+              ]} 
+            />
+          </Card>
+        </motion.div>
+
+        {/* Velocity Scroll Divider */}
+        <div className="my-12">
+          <VelocityScroll 
+            text="MY JOURNEY THROUGH THE YEARS • MY JOURNEY THROUGH THE YEARS •" 
+            default_velocity={3}
+            className="text-2xl font-bold text-primary/50"
           />
         </div>
 
         {/* Timeline Section */}
-        <div className="relative">
-          <Timeline 
-            data={journeyData.map(item => ({
-              ...item,
-              content: (
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Card className="p-6 cursor-pointer hover:scale-105 transition-transform">
-                      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                      <p className="text-muted-foreground">{item.description}</p>
-                    </Card>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-[425px]">
-                    <div className="grid gap-4">
-                      {item.image && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          {journeyData.map((item, index) => (
+            <Dialog key={index}>
+              <DialogTrigger asChild>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="cursor-pointer"
+                >
+                  <Card className="overflow-hidden hover:scale-105 transition-transform duration-300">
+                    {item.type === "image" ? (
+                      <div className="w-full h-48">
                         <img 
                           src={item.image} 
                           alt={item.title} 
-                          className="w-full h-48 object-cover rounded-lg"
+                          className="w-full h-full object-cover"
                         />
-                      )}
-                      <h3 className="text-2xl font-bold">{item.title}</h3>
-                      <p className="text-muted-foreground">{item.details}</p>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              )
-            }))}
-          />
+                      </div>
+                    ) : (
+                      <div className="p-6 h-48 flex flex-col justify-center items-center bg-primary/5">
+                        <h3 className="text-2xl font-bold mb-2">{item.year}</h3>
+                        <p className="text-lg text-center text-muted-foreground">{item.title}</p>
+                      </div>
+                    )}
+                  </Card>
+                </motion.div>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <div className="grid gap-4">
+                  <h2 className="text-2xl font-bold">{item.year} - {item.title}</h2>
+                  {item.type === "image" && (
+                    <img 
+                      src={item.image} 
+                      alt={item.title} 
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+                  )}
+                  <p className="text-muted-foreground">{item.details}</p>
+                </div>
+              </DialogContent>
+            </Dialog>
+          ))}
         </div>
       </div>
     </div>
