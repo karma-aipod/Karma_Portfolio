@@ -1,136 +1,92 @@
-import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
-import { MorphingText } from "@/components/ui/morphing-text";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
+import React from "react";
+import { Timeline } from "@/components/ui/timeline";
 
 const Journey = () => {
-  const journeyData = [
+  const timelineData = [
     {
-      year: "2000",
-      title: "Born",
-      description: "My journey begins",
-      details: "Born in a loving family",
-      type: "image",
-      image: "https://images.unsplash.com/photo-1492725764893-90b379c2b6e7",
+      title: "2024",
+      content: (
+        <div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+            Built and launched Aceternity UI and Aceternity UI Pro from scratch
+          </p>
+          <div className="grid grid-cols-2 gap-4">
+            <img
+              src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
+              alt="coding setup"
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7"
+              alt="code editor"
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+              alt="development"
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1483058712412-4245e9b90334"
+              alt="workspace"
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+          </div>
+        </div>
+      ),
     },
     {
-      year: "2016",
-      title: "10th Grade",
-      description: "Completed Secondary Education",
-      details: "Finished my 10th grade with distinction",
-      type: "text",
+      title: "Early 2023",
+      content: (
+        <div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+            Started learning and implementing advanced React patterns and animations
+          </p>
+          <div className="grid grid-cols-2 gap-4">
+            <img
+              src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
+              alt="coding"
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7"
+              alt="development"
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+          </div>
+        </div>
+      ),
     },
     {
-      year: "2018",
-      title: "12th Grade",
-      description: "Completed Higher Secondary",
-      details: "Graduated high school with focus on science",
-      type: "image",
-      image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94",
+      title: "Changelog",
+      content: (
+        <div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
+            Key achievements and milestones
+          </p>
+          <div className="mb-8">
+            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
+              ✅ Mastered React and TypeScript
+            </div>
+            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
+              ✅ Built multiple production applications
+            </div>
+            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
+              ✅ Learned advanced animation techniques
+            </div>
+            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
+              ✅ Contributed to open source projects
+            </div>
+          </div>
+        </div>
+      ),
     },
-    {
-      year: "2019",
-      title: "Started College",
-      description: "Began University Journey",
-      details: "Started pursuing Computer Science",
-      type: "text",
-    },
-    {
-      year: "2023",
-      title: "Graduated College",
-      description: "Completed Bachelor's Degree",
-      details: "Graduated with honors in Computer Science",
-      type: "image",
-      image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94",
-    },
-    {
-      year: "2023",
-      title: "First Job",
-      description: "Started Professional Career",
-      details: "Joined and explored the corporate world",
-      type: "text",
-    }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-      <div className="max-w-7xl mx-auto px-4 py-24">
-        {/* Hero Section with 3D Card */}
-        <motion.div 
-          className="mb-16 perspective-1000"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Card className="p-8 transform-gpu hover:rotate-x-12 transition-transform duration-500 bg-card/50 backdrop-blur-sm border-2">
-            <MorphingText 
-              texts={[
-                "My Journey",
-                "Through Time",
-                "Life Story",
-                "Milestones",
-                "Achievements"
-              ]} 
-              className="text-4xl md:text-6xl font-bold text-center"
-            />
-          </Card>
-        </motion.div>
-
-        {/* Velocity Scroll Divider */}
-        <div className="w-full my-12 overflow-hidden">
-          <VelocityScroll 
-            text="MY JOURNEY THROUGH THE YEARS • MY JOURNEY THROUGH THE YEARS •" 
-            default_velocity={3}
-            className="text-2xl font-bold text-primary/50 w-full"
-          />
-        </div>
-
-        {/* Timeline Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-          {journeyData.map((item, index) => (
-            <Dialog key={index}>
-              <DialogTrigger asChild>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="cursor-pointer"
-                >
-                  <Card className="overflow-hidden hover:scale-105 transition-transform duration-300">
-                    {item.type === "image" ? (
-                      <div className="w-full h-48">
-                        <img 
-                          src={item.image} 
-                          alt={item.title} 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ) : (
-                      <div className="p-6 h-48 flex flex-col justify-center items-center bg-primary/5">
-                        <h3 className="text-2xl font-bold mb-2">{item.year}</h3>
-                        <p className="text-lg text-center text-muted-foreground">{item.title}</p>
-                      </div>
-                    )}
-                  </Card>
-                </motion.div>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px]">
-                <div className="grid gap-4">
-                  <h2 className="text-2xl font-bold">{item.year} - {item.title}</h2>
-                  {item.type === "image" && (
-                    <img 
-                      src={item.image} 
-                      alt={item.title} 
-                      className="w-full h-48 object-cover rounded-lg"
-                    />
-                  )}
-                  <p className="text-muted-foreground">{item.details}</p>
-                </div>
-              </DialogContent>
-            </Dialog>
-          ))}
-        </div>
+    <div className="min-h-screen w-full">
+      <div className="absolute top-0 left-0 w-full">
+        <Timeline data={timelineData} />
       </div>
     </div>
   );
