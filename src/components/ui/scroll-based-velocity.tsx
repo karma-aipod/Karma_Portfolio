@@ -10,7 +10,6 @@ import {
   useTransform,
   useVelocity,
 } from "framer-motion";
-
 import { cn } from "@/lib/utils";
 
 interface VelocityScrollProps {
@@ -67,7 +66,6 @@ export function VelocityScroll({
       };
 
       calculateRepetitions();
-
       window.addEventListener("resize", calculateRepetitions);
       return () => window.removeEventListener("resize", calculateRepetitions);
     }, [children]);
@@ -85,15 +83,21 @@ export function VelocityScroll({
       }
 
       moveBy += directionFactor.current * moveBy * velocityFactor.get();
-
       baseX.set(baseX.get() + moveBy);
     });
 
     return (
       <div className="w-full overflow-hidden whitespace-nowrap" ref={containerRef}>
-        <motion.div className={cn("flex whitespace-nowrap", className)} style={{ x }}>
+        <motion.div 
+          className={cn("inline-flex w-full justify-start items-center", className)} 
+          style={{ x }}
+        >
           {Array.from({ length: repetitions }).map((_, i) => (
-            <span key={i} ref={i === 0 ? textRef : null} className="mx-4">
+            <span 
+              key={i} 
+              ref={i === 0 ? textRef : null}
+              className="inline-block whitespace-nowrap mx-4"
+            >
               {children}
             </span>
           ))}
@@ -103,13 +107,13 @@ export function VelocityScroll({
   }
 
   return (
-    <section className="relative w-full">
+    <div className="relative w-full">
       <ParallaxText baseVelocity={default_velocity} className={className}>
         {text}
       </ParallaxText>
       <ParallaxText baseVelocity={-default_velocity} className={className}>
         {text}
       </ParallaxText>
-    </section>
+    </div>
   );
 }

@@ -55,7 +55,7 @@ const Journey = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-      <div className="max-w-5xl mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 py-24">
         {/* Hero Section with 3D Card */}
         <motion.div 
           className="mb-16 perspective-1000"
@@ -72,16 +72,17 @@ const Journey = () => {
                 "Milestones",
                 "Achievements"
               ]} 
+              className="text-4xl md:text-6xl font-bold text-center"
             />
           </Card>
         </motion.div>
 
         {/* Velocity Scroll Divider */}
-        <div className="my-12">
+        <div className="w-full my-12 overflow-hidden">
           <VelocityScroll 
             text="MY JOURNEY THROUGH THE YEARS • MY JOURNEY THROUGH THE YEARS •" 
             default_velocity={3}
-            className="text-2xl font-bold text-primary/50"
+            className="text-2xl font-bold text-primary/50 w-full"
           />
         </div>
 
