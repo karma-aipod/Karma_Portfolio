@@ -1,5 +1,7 @@
 import React from "react";
 import { Timeline } from "@/components/ui/timeline";
+import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
+import { motion } from "framer-motion";
 
 const Journey = () => {
   const timelineData = [
@@ -8,7 +10,7 @@ const Journey = () => {
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-            Built and launched Aceternity UI and Aceternity UI Pro from scratch
+            Built and launched multiple full-stack applications from scratch
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
@@ -85,7 +87,40 @@ const Journey = () => {
 
   return (
     <div className="min-h-screen w-full">
-      <div className="absolute top-0 left-0 w-full">
+      {/* Hero Section */}
+      <div className="relative h-screen w-full overflow-hidden bg-background">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
+        </div>
+        
+        <div className="relative z-10 flex h-full flex-col items-center justify-center p-4 sm:p-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl"
+          >
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400">
+              My Journey
+            </h1>
+            <p className="text-lg sm:text-xl text-muted-foreground mb-8">
+              Explore my path through technology and development
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Scrolling Text Section */}
+      <div className="py-20 bg-background">
+        <VelocityScroll 
+          text="DEVELOPMENT JOURNEY THROUGH THE YEARS" 
+          default_velocity={3}
+          className="text-4xl font-bold text-neutral-800 dark:text-neutral-200"
+        />
+      </div>
+
+      {/* Timeline Section */}
+      <div className="relative w-full bg-background">
         <Timeline data={timelineData} />
       </div>
     </div>
