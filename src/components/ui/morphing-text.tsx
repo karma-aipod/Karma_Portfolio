@@ -34,6 +34,8 @@ const useMorphingText = (texts: string[]) => {
   );
 
   const doMorph = useCallback(() => {
+    if (!texts || texts.length === 0) return;
+    
     morphRef.current -= cooldownRef.current;
     cooldownRef.current = 0;
 
@@ -49,7 +51,7 @@ const useMorphingText = (texts: string[]) => {
     if (fraction === 1) {
       textIndexRef.current++;
     }
-  }, [setStyles]);
+  }, [setStyles, texts]);
 
   const doCooldown = useCallback(() => {
     morphRef.current = 0;
@@ -63,6 +65,8 @@ const useMorphingText = (texts: string[]) => {
   }, []);
 
   useEffect(() => {
+    if (!texts || texts.length === 0) return;
+    
     let animationFrameId: number;
 
     const animate = () => {
@@ -82,7 +86,7 @@ const useMorphingText = (texts: string[]) => {
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [doMorph, doCooldown]);
+  }, [doMorph, doCooldown, texts]);
 
   return { text1Ref, text2Ref };
 };
