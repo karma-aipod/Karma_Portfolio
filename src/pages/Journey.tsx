@@ -102,7 +102,7 @@ const Journey = () => {
             className="max-w-3xl"
           >
             <MorphingText
-              words={["My Journey", "My Story", "My Path"]}
+              texts={["My Journey", "My Story", "My Path"]}
               className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400"
             />
             <p className="text-lg sm:text-xl text-muted-foreground mb-8">
