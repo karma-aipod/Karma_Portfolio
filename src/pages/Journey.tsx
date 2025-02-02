@@ -89,7 +89,7 @@ const Journey = () => {
   return (
     <div className="relative w-full overflow-x-hidden">
       {/* Hero Section */}
-      <div className="relative h-screen w-full">
+      <div className="relative min-h-screen w-full px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
         </div>
@@ -99,13 +99,13 @@ const Journey = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="max-w-3xl w-full"
+            className="w-full max-w-3xl mx-auto"
           >
             <MorphingText
               texts={["My Journey", "My Story", "My Path"]}
               className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400"
             />
-            <p className="text-lg sm:text-xl text-muted-foreground mb-8">
+            <p className="text-lg sm:text-xl text-muted-foreground mb-8 px-4 sm:px-0">
               Explore my path through technology and development
             </p>
           </motion.div>
@@ -113,7 +113,7 @@ const Journey = () => {
       </div>
 
       {/* Scrolling Text Section */}
-      <div className="py-20 w-full">
+      <div className="w-full py-20 px-4 sm:px-6 lg:px-8">
         <VelocityScroll 
           text="DEVELOPMENT JOURNEY THROUGH THE YEARS" 
           default_velocity={3}
