@@ -2,6 +2,7 @@ import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 import { motion } from "framer-motion";
+import { MorphingText } from "@/components/ui/morphing-text";
 
 const Journey = () => {
   const timelineData = [
@@ -86,7 +87,7 @@ const Journey = () => {
   ];
 
   return (
-    <div className="relative min-h-screen w-full bg-background">
+    <div className="relative min-h-screen w-full bg-background overflow-x-hidden">
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -100,9 +101,10 @@ const Journey = () => {
             transition={{ duration: 0.5 }}
             className="max-w-3xl"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400">
-              My Journey
-            </h1>
+            <MorphingText
+              words={["My Journey", "My Story", "My Path"]}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400"
+            />
             <p className="text-lg sm:text-xl text-muted-foreground mb-8">
               Explore my path through technology and development
             </p>
