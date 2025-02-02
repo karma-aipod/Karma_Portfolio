@@ -86,9 +86,9 @@ const Journey = () => {
   ];
 
   return (
-    <div className="min-h-screen w-full">
+    <div className="relative min-h-screen w-full bg-background">
       {/* Hero Section */}
-      <div className="relative h-screen w-full overflow-hidden bg-background">
+      <div className="relative h-screen w-full overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
         </div>
@@ -111,7 +111,7 @@ const Journey = () => {
       </div>
 
       {/* Scrolling Text Section */}
-      <div className="py-20 bg-background">
+      <div className="py-20">
         <VelocityScroll 
           text="DEVELOPMENT JOURNEY THROUGH THE YEARS" 
           default_velocity={3}
@@ -120,7 +120,7 @@ const Journey = () => {
       </div>
 
       {/* Timeline Section */}
-      <div className="relative w-full bg-background">
+      <div className="relative w-full">
         <Timeline data={timelineData} />
       </div>
     </div>
