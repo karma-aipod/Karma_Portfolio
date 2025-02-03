@@ -32,7 +32,7 @@ const Skills = () => {
     "postgresql",
     "git",
     "github",
-    "code", // Changed to the correct slug for VS Code
+    "visualstudiocode", // Changed back to visualstudiocode with correct version
   ];
 
   const topSkills = [

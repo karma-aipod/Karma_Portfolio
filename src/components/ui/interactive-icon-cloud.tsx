@@ -67,7 +67,10 @@ export function IconCloud({ iconSlugs }: DynamicCloudProps) {
   const { theme } = useTheme()
 
   useEffect(() => {
-    fetchSimpleIcons({ slugs: iconSlugs }).then(setData)
+    fetchSimpleIcons({ 
+      slugs: iconSlugs,
+      version: "8.12.0" // Using a specific version where visualstudiocode icon exists
+    }).then(setData)
   }, [iconSlugs])
 
   const renderedIcons = useMemo(() => {
