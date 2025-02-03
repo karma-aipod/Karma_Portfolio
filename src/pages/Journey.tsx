@@ -130,7 +130,7 @@ const Journey = () => {
         </p>
       </div>
 
-      <div className="relative -mx-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20 py-12">
+      <div className="relative -mx-4 w-screen bg-transparent py-12 overflow-hidden">
         <VelocityScroll 
           text="DEVELOPMENT JOURNEY THROUGH THE YEARS" 
           default_velocity={3}
