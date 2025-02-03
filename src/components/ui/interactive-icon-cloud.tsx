@@ -33,7 +33,6 @@ export const cloudProps: Omit<ICloud, "children"> = {
     outlineColour: "#0000",
     maxSpeed: 0.04,
     minSpeed: 0.02,
-    // dragControl: false,
   },
 }
 
@@ -68,7 +67,10 @@ export function IconCloud({ iconSlugs }: DynamicCloudProps) {
   const { theme } = useTheme()
 
   useEffect(() => {
-    fetchSimpleIcons({ slugs: iconSlugs }).then(setData)
+    fetchSimpleIcons({ 
+      slugs: iconSlugs, 
+      simpleIconsVersion: "9.0.0" // Specify version 9.0.0 which has the visualstudiocode icon
+    }).then(setData)
   }, [iconSlugs])
 
   const renderedIcons = useMemo(() => {
