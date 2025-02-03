@@ -69,7 +69,7 @@ export function IconCloud({ iconSlugs }: DynamicCloudProps) {
   useEffect(() => {
     fetchSimpleIcons({ 
       slugs: iconSlugs,
-      version: "8.12.0" // Using a specific version where visualstudiocode icon exists
+      simpleIconsVersion: "8.12.0" // Using simpleIconsVersion instead of version
     }).then(setData)
   }, [iconSlugs])
 
