@@ -32,7 +32,7 @@ const Skills = () => {
     "postgresql",
     "git",
     "github",
-    "visualstudiocode",
+    "vscode", // Changed from visualstudiocode to vscode
   ];
 
   const topSkills = [
