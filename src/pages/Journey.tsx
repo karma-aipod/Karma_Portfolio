@@ -87,33 +87,27 @@ const Journey = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white p-8 space-y-12">
+    <div className="container mx-auto max-w-4xl px-4 py-8">
       {/* Hero Section */}
-      <div className="relative w-full">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
-        </div>
-        
-        <div className="relative z-10 flex h-full flex-col items-center justify-center p-4 sm:p-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="w-full max-w-3xl mx-auto"
-          >
-            <MorphingText
-              texts={["My Journey", "My Story", "My Path"]}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400"
-            />
-            <p className="text-lg sm:text-xl text-muted-foreground mb-8">
-              Explore my path through technology and development
-            </p>
-          </motion.div>
-        </div>
+      <div className="relative w-full mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center"
+        >
+          <MorphingText
+            texts={["My Journey", "My Story", "My Path"]}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400"
+          />
+          <p className="text-lg sm:text-xl text-muted-foreground mb-8">
+            Explore my path through technology and development
+          </p>
+        </motion.div>
       </div>
 
       {/* Scrolling Text Section */}
-      <div className="w-full py-20">
+      <div className="w-full py-12">
         <VelocityScroll 
           text="DEVELOPMENT JOURNEY THROUGH THE YEARS" 
           default_velocity={3}
