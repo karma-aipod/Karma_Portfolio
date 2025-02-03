@@ -68,8 +68,7 @@ export function IconCloud({ iconSlugs }: DynamicCloudProps) {
 
   useEffect(() => {
     fetchSimpleIcons({ 
-      slugs: iconSlugs,
-      simpleIconsVersion: "8.12.0" // Using simpleIconsVersion instead of version
+      slugs: iconSlugs
     }).then(setData)
   }, [iconSlugs])
 
