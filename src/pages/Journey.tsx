@@ -2,7 +2,10 @@ import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 import { motion } from "framer-motion";
-import { MorphingText } from "@/components/ui/morphing-text";
+import { AnimatedText } from "@/components/ui/animated-underline-text-one";
+import { TextScramble } from "@/components/ui/text-scramble";
+import { Tilt } from "@/components/ui/tilt";
+import { Spotlight } from "@/components/ui/spotlight";
 
 const Journey = () => {
   const timelineData = [
@@ -10,18 +13,21 @@ const Journey = () => {
       title: "2024",
       content: (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white dark:bg-neutral-900 p-4 rounded-lg shadow-lg cursor-pointer"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
-              alt="coding setup"
-              className="rounded-lg object-cover w-full h-40 mb-2"
-            />
-            <p className="text-sm text-neutral-700 dark:text-neutral-300">Development Environment Setup</p>
-          </motion.div>
+          <Tilt className="relative group">
+            <Spotlight className="from-purple-500/50 via-purple-500/20 to-transparent" />
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white dark:bg-neutral-900 p-4 rounded-lg shadow-lg cursor-pointer"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
+                alt="coding setup"
+                className="rounded-lg object-cover w-full h-40 mb-2"
+              />
+              <p className="text-sm text-neutral-700 dark:text-neutral-300">Development Environment Setup</p>
+            </motion.div>
+          </Tilt>
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -117,20 +123,19 @@ const Journey = () => {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8">
       <div className="relative w-full mb-12">
-        <MorphingText
-          texts={["My Journey", "My Story", "My Path"]}
+        <AnimatedText
+          text="My Journey"
           className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600"
         />
         <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">
           Changelog from my journey
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          I&apos;ve been working on Aceternity for the past 2 years. Here&apos;s
-          a timeline of my journey.
-        </p>
+        <TextScramble className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          I&apos;ve been working on Aceternity for the past 2 years. Here&apos;s a timeline of my journey.
+        </TextScramble>
       </div>
 
-      <div className="relative -mx-[calc(2rem+240px)] w-[calc(100%+240px+4rem)] bg-transparent py-12 overflow-hidden">
+      <div className="relative ml-[240px] w-[calc(100%-240px)] bg-transparent py-12 overflow-hidden">
         <VelocityScroll 
           text="DEVELOPMENT JOURNEY THROUGH THE YEARS" 
           default_velocity={3}
@@ -146,4 +151,3 @@ const Journey = () => {
 };
 
 export default Journey;
-
