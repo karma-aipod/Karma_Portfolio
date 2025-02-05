@@ -1,72 +1,50 @@
-'use client';
+"use client";
 
-import React, { useRef } from 'react';
-import {
-  motion,
-  useMotionTemplate,
-  useMotionValue,
-  useSpring,
-  useTransform,
-  type MotionStyle,
-  type SpringOptions,
-} from 'framer-motion';
+import React, { useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
-type TiltProps = {
+interface TiltProps {
   children: React.ReactNode;
   className?: string;
-  style?: MotionStyle;
   rotationFactor?: number;
-  isRevese?: boolean;
-  springOptions?: SpringOptions;
-};
+}
 
-export function Tilt({
-  children,
-  className,
-  style,
-  rotationFactor = 15,
-  isRevese = false,
-  springOptions,
-}: TiltProps) {
+export const Tilt = ({ children, className = "", rotationFactor = 5 }: TiltProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const xSpring = useSpring(x, springOptions);
-  const ySpring = useSpring(y, springOptions);
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
 
   const rotateX = useTransform(
-    ySpring,
+    mouseYSpring,
     [-0.5, 0.5],
-    isRevese
-      ? [rotationFactor, -rotationFactor]
-      : [-rotationFactor, rotationFactor]
+    [`${rotationFactor}deg`, `-${rotationFactor}deg`]
   );
   const rotateY = useTransform(
-    xSpring,
+    mouseXSpring,
     [-0.5, 0.5],
-    isRevese
-      ? [-rotationFactor, rotationFactor]
-      : [rotationFactor, -rotationFactor]
+    [`-${rotationFactor}deg`, `${rotationFactor}deg`]
   );
-
-  const transform = useMotionTemplate`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
-
+    
     const rect = ref.current.getBoundingClientRect();
+    
     const width = rect.width;
     const height = rect.height;
+    
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-
-    const xPos = mouseX / width - 0.5;
-    const yPos = mouseY / height - 0.5;
-
-    x.set(xPos);
-    y.set(yPos);
+    
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    
+    x.set(xPct);
+    y.set(yPct);
   };
 
   const handleMouseLeave = () => {
@@ -77,16 +55,16 @@ export function Tilt({
   return (
     <motion.div
       ref={ref}
-      className={className}
-      style={{
-        transformStyle: 'preserve-3d',
-        ...style,
-        transform,
-      }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
+      className={className}
     >
       {children}
     </motion.div>
   );
-}
+};
