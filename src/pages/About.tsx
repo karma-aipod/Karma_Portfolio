@@ -16,8 +16,7 @@ const About = () => {
       {/* Hero Section */}
       <Card className="w-full h-[500px] bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden border-none shadow-2xl">
         <Spotlight
-          className="-top-40 left-0 md:left-60 md:-top-20"
-          fill="white"
+          className="-top-40 left-0 md:left-60 md:-top-20 from-white/50 via-white/20 to-white/10"
         />
         
         <div className="flex h-full">
