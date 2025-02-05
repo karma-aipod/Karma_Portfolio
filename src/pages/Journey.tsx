@@ -1,21 +1,19 @@
 import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
-import { motion, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { AnimatedText } from "@/components/ui/animated-underline-text-one";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { Tilt } from "@/components/ui/tilt";
 import { Spotlight } from "@/components/ui/spotlight";
-import { useSidebar } from "@/components/ui/sidebar";
 
 const Journey = () => {
-  const { open } = useSidebar();
   const timelineData = [
     {
       title: "2024",
       content: (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Tilt className="relative group" rotationFactor={8}>
+          <Tilt className="relative group">
             <Spotlight className="from-purple-500/50 via-purple-500/20 to-transparent" />
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -129,20 +127,15 @@ const Journey = () => {
           text="My Journey"
           className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600"
         />
-        <AnimatedText
-          text="Changelog from my journey"
-          className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600"
-          underlinePath="M 0,10 Q 75,0 150,10 Q 225,20 300,10"
-          underlineHoverPath="M 0,10 Q 75,20 150,10 Q 225,0 300,10"
-        />
-        <TextScramble
-          className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
-        >
-          I've been working on Aceternity for the past 2 years. Here's a timeline of my journey.
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">
+          Changelog from my journey
+        </h1>
+        <TextScramble className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          I&apos;ve been working on Aceternity for the past 2 years. Here&apos;s a timeline of my journey.
         </TextScramble>
       </div>
 
-      <div className={`relative ${open ? 'ml-[240px] w-[calc(100%-240px)]' : 'w-full'} bg-transparent py-12 overflow-hidden transition-all duration-300`}>
+      <div className="relative ml-[240px] w-[calc(100%-240px)] bg-transparent py-12 overflow-hidden">
         <VelocityScroll 
           text="DEVELOPMENT JOURNEY THROUGH THE YEARS" 
           default_velocity={3}
