@@ -130,7 +130,7 @@ const Journey = () => {
         </p>
       </div>
 
-      <div className="relative -mx-4 w-screen bg-transparent py-12 overflow-hidden">
+      <div className="relative -mx-[calc(2rem+240px)] w-[calc(100%+240px+4rem)] bg-transparent py-12 overflow-hidden">
         <VelocityScroll 
           text="DEVELOPMENT JOURNEY THROUGH THE YEARS" 
           default_velocity={3}
@@ -146,3 +146,4 @@ const Journey = () => {
 };
 
 export default Journey;
+
