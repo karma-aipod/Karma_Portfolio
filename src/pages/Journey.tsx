@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
@@ -132,12 +131,6 @@ const Journey = () => {
           className="h-[100px] flex items-center justify-center font-bold mb-6"
           textClassName="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600"
         />
-        <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">
-          Changelog from my journey
-        </h1>
-        <TextScramble className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          I&apos;ve been working on Aceternity for the past 2 years. Here&apos;s a timeline of my journey.
-        </TextScramble>
       </div>
 
       <div className="relative ml-[240px] w-[calc(100%-240px)] bg-transparent py-12 overflow-hidden">
