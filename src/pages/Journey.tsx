@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
@@ -6,6 +7,7 @@ import { AnimatedText } from "@/components/ui/animated-underline-text-one";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { Tilt } from "@/components/ui/tilt";
 import { Spotlight } from "@/components/ui/spotlight";
+import { GooeyText } from "@/components/ui/gooey-text-morphing";
 
 const Journey = () => {
   const timelineData = [
@@ -123,9 +125,12 @@ const Journey = () => {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8">
       <div className="relative w-full mb-12">
-        <AnimatedText
-          text="My Journey"
-          className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600"
+        <GooeyText
+          texts={["My Journey", "My Path", "My Story", "My Experience"]}
+          morphTime={1}
+          cooldownTime={0.25}
+          className="h-[100px] flex items-center justify-center font-bold mb-6"
+          textClassName="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600"
         />
         <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">
           Changelog from my journey
