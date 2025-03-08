@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Github, Link as LinkIcon } from "lucide-react";
 import { LayoutGrid } from "@/components/ui/layout-grid";
+import { Spotlight } from "@/components/ui/spotlight";
 
 const ProjectOne = () => {
   return (
@@ -89,6 +90,49 @@ const ProjectTwo = () => {
   );
 };
 
+const ProjectThree = () => {
+  return (
+    <div>
+      <p className="font-bold md:text-4xl text-xl text-white">
+        AI Chat Application
+      </p>
+      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+        Real-time chat application with AI-powered responses and multi-language support
+      </p>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {["React", "Firebase", "OpenAI API"].map((tech) => (
+          <span
+            key={tech}
+            className="px-3 py-1 bg-white/10 rounded-full text-sm text-white"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+      <div className="flex gap-4">
+        <a
+          href="https://github.com/username/ai-chat"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-white hover:text-white/80"
+        >
+          <Github size={20} />
+          <span>GitHub</span>
+        </a>
+        <a
+          href="https://ai-chat.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-white hover:text-white/80"
+        >
+          <LinkIcon size={20} />
+          <span>Live Demo</span>
+        </a>
+      </div>
+    </div>
+  );
+};
+
 const Projects = () => {
   const cards = [
     {
@@ -103,7 +147,12 @@ const Projects = () => {
       className: "col-span-1",
       thumbnail: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=3474&auto=format&fit=crop",
     },
-    // You can add more projects here as needed
+    {
+      id: 3,
+      content: <ProjectThree />,
+      className: "md:col-span-2",
+      thumbnail: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=3474&auto=format&fit=crop",
+    },
   ];
 
   return (
@@ -111,9 +160,13 @@ const Projects = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="min-h-screen pt-16"
+      className="min-h-screen pt-16 relative overflow-hidden"
     >
-      <div className="container mx-auto px-6">
+      <Spotlight
+        className="hidden md:block"
+        size={500}
+      />
+      <div className="container mx-auto px-6 relative z-10">
         <h1 className="text-4xl font-bold text-center mb-12">My Projects</h1>
         <div className="max-w-7xl mx-auto">
           <LayoutGrid cards={cards} />
