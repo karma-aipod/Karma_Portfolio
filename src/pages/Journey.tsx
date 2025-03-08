@@ -90,7 +90,7 @@ const Journey = () => {
         <GooeyText texts={["My Journey", "My Path", "My Story", "My Experience"]} morphTime={1} cooldownTime={0.25} className="h-[100px] flex items-center justify-center font-bold mb-6" textClassName="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600" />
       </div>
 
-      <div className="relative ml-[-10px] w-[calc(110%-40px)] bg-transparent overflow-hidden rounded-none mx-px py-[50px]">
+      <div className="relative ml-[-10px] w-[calc(110%-40px)] bg-transparent overflow-hidden rounded-none mx-px py-[100px]">
         <VelocityScroll text="DEVELOPMENT JOURNEY THROUGH THE YEARS" default_velocity={3} className="text-4xl font-bold text-neutral-800 dark:text-neutral-200" />
       </div>
 
