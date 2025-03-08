@@ -153,6 +153,12 @@ const Projects = () => {
       className: "md:col-span-2",
       thumbnail: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=3474&auto=format&fit=crop",
     },
+    {
+      id: 4,
+      content: <ProjectOne />,
+      className: "col-span-1",
+      thumbnail: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=3470&auto=format&fit=crop",
+    },
   ];
 
   return (
@@ -160,14 +166,14 @@ const Projects = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="min-h-screen pt-16 relative overflow-hidden"
+      className="min-h-screen pt-16 relative overflow-hidden bg-gradient-to-b from-gray-900 to-black"
     >
       <Spotlight
         className="hidden md:block"
         size={500}
       />
       <div className="container mx-auto px-6 relative z-10">
-        <h1 className="text-4xl font-bold text-center mb-12">My Projects</h1>
+        <h1 className="text-4xl font-bold text-center mb-12 text-white">My Projects</h1>
         <div className="max-w-7xl mx-auto">
           <LayoutGrid cards={cards} />
         </div>
