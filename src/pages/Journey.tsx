@@ -83,6 +83,8 @@ const Journey = () => {
               <p>✅ Pure Storage (Internal): Organized 150+ KPIs and documented 200+ SQL/DAX queries</p>
               <p>✅ Certifications: Power BI Desktop, Corporate Financial Statement Analysis</p>
               <p>✅ SQL – 6★ Gold Badge on HackerRank</p>
+              <p>🎓 Education: PGDM – Big Data Analytics (2025–27), Goa Institute of Management</p>
+              <p>🎓 Education: B.E. Chemical Engineering (2019–23), Jadavpur University – 8.32/10 CGPA</p>
             </div>
           </motion.div>
         </div>

@@ -54,22 +54,22 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      content: "contact@example.com",
-      link: "mailto:contact@example.com",
+      content: "tuhin.bhattacharya25b@gim.ac.in",
+      link: "mailto:tuhin.bhattacharya25b@gim.ac.in",
       delay: 0
     },
     {
       icon: Phone,
       title: "Phone",
-      content: "+1 234 567 890",
-      link: "tel:+1234567890",
+      content: "+91-7548079216",
+      link: "tel:+917548079216",
       delay: 1
     },
     {
       icon: MapPin,
       title: "Location",
-      content: "New York, NY",
-      link: "https://maps.google.com",
+      content: "Goa, India",
+      link: "https://maps.google.com/?q=Goa,India",
       delay: 2
     }
   ];

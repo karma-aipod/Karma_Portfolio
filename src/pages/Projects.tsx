@@ -12,33 +12,28 @@ import React from "react";
 
 const projects: Project[] = [
   {
-    title: "Portfolio Website",
-    description: "Personal portfolio built with React and TailwindCSS",
-    tech: ["React", "TailwindCSS", "Framer Motion"],
-    github: "https://github.com/username/portfolio",
-    demo: "https://portfolio.com",
-  },
-  {
-    title: "E-commerce Platform",
+    title: "SUJAN P&L Report (Celebal Technologies)",
     description:
-      "Full-stack e-commerce platform with authentication and payment integration",
-    tech: ["Next.js", "Node.js", "MongoDB"],
-    github: "https://github.com/username/ecommerce",
-    demo: "https://ecommerce.com",
+      "Built a 54-page Power BI P&L with 300+ DAX and advanced time intelligence; redesigned UX with custom visuals, slicers, and bookmarks; reduced query load times by ~40% via Performance Analyzer.",
+    tech: ["Power BI", "DAX", "Power Query", "MS Excel"],
   },
   {
-    title: "AI Chat Application",
-    description: "Real-time chat app with AI-powered responses",
-    tech: ["React", "Firebase", "OpenAI API"],
-    github: "https://github.com/username/ai-chat",
-    demo: "https://ai-chat.com",
+    title: "Pure Storage – KPI System (Internal)",
+    description:
+      "Organized detailed KPI sheets across 5 projects (150+ KPIs) and documented 200+ SQL/DAX queries to improve clarity and delivery.",
+    tech: ["SQL", "DAX", "Power BI", "Documentation"],
   },
   {
-    title: "Weather Dashboard",
-    description: "Real-time weather visualization with 5-day forecasts",
-    tech: ["React", "OpenWeather API", "TailwindCSS"],
-    github: "https://github.com/username/weather-dashboard",
-    demo: "https://weather.example.com",
+    title: "Hydrogen Production & Carbon Footprint Analysis (ONGC)",
+    description:
+      "Simulated biomass gasification using ASPEN-Plus/HYSYS; demonstrated method to extract 99% pure hydrogen to reduce carbon footprint.",
+    tech: ["ASPEN-Plus", "ASPEN-HYSYS", "Simulation", "Process"],
+  },
+  {
+    title: "Aqueous Retarded Acid Formulation (ONGC)",
+    description:
+      "Researched and devised solution to slow limestone–HCl reaction; gained field exposure to Surface Christmas Tree and stimulation techniques.",
+    tech: ["Chemical Eng.", "Optimization", "Field Ops"],
   },
 ];
 

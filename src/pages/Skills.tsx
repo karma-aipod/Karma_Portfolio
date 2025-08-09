@@ -6,41 +6,41 @@ import { motion } from "framer-motion";
 
 const Skills = () => {
   const skills = [
-    { name: "VS Code", color: "bg-blue-500" },
+    { name: "Power BI", color: "bg-yellow-500" },
+    { name: "Power Query", color: "bg-emerald-600" },
+    { name: "MS Excel", color: "bg-green-600" },
+    { name: "SQL", color: "bg-blue-600" },
+    { name: "Python", color: "bg-indigo-600" },
+    { name: "DAX", color: "bg-purple-600" },
+    { name: "Data Modeling", color: "bg-pink-600" },
+    { name: "ETL", color: "bg-cyan-600" },
+    { name: "Documentation", color: "bg-gray-700" },
     { name: "Git", color: "bg-orange-500" },
-    { name: "React", color: "bg-cyan-500" },
-    { name: "TypeScript", color: "bg-blue-600" },
-    { name: "Tailwind CSS", color: "bg-teal-500" },
-    { name: "Node.js", color: "bg-green-600" },
-    { name: "Framer Motion", color: "bg-purple-500" },
-    { name: "Shadcn/ui", color: "bg-gray-800" },
-    { name: "Matter.js", color: "bg-red-500" },
-    { name: "Vite", color: "bg-yellow-500" },
-    { name: "ESLint", color: "bg-violet-500" },
-    { name: "npm", color: "bg-red-600" }
+    { name: "Jupyter", color: "bg-amber-600" },
+    { name: "Visualization", color: "bg-teal-600" }
   ];
 
   const skillSlugs = [
-    "typescript",
-    "javascript",
-    "react",
-    "html5",
-    "css3",
-    "nodedotjs",
-    "nextdotjs",
-    "prisma",
+    "powerbi",
+    "microsoftsqlserver",
+    "mysql",
     "postgresql",
+    "python",
+    "anaconda",
+    "jupyter",
+    "pandas",
+    "numpy",
+    "microsoftexcel",
     "git",
     "github",
-    "visualstudiocode", // Changed back to visualstudiocode with correct version
   ];
 
   const topSkills = [
-    { name: "React", proficiency: 90 },
-    { name: "TypeScript", proficiency: 85 },
-    { name: "Node.js", proficiency: 80 },
-    { name: "Tailwind CSS", proficiency: 85 },
-    { name: "Git", proficiency: 90 },
+    { name: "SQL", proficiency: 90 },
+    { name: "Power BI", proficiency: 90 },
+    { name: "DAX", proficiency: 85 },
+    { name: "MS Excel", proficiency: 85 },
+    { name: "Python", proficiency: 75 },
   ];
 
   return (
