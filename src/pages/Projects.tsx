@@ -1,184 +1,114 @@
-
 import { motion } from "framer-motion";
 import { Github, Link as LinkIcon } from "lucide-react";
-import { LayoutGrid } from "@/components/ui/layout-grid";
-import { Spotlight } from "@/components/ui/spotlight";
+import React from "react";
 
-const ProjectOne = () => {
-  return (
-    <div>
-      <p className="font-bold md:text-4xl text-xl text-white">
-        Portfolio Website
-      </p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A personal portfolio website built with React and TailwindCSS
-      </p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {["React", "TailwindCSS", "Framer Motion"].map((tech) => (
-          <span
-            key={tech}
-            className="px-3 py-1 bg-white/10 rounded-full text-sm text-white"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-      <div className="flex gap-4">
-        <a
-          href="https://github.com/username/portfolio"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-white hover:text-white/80"
-        >
-          <Github size={20} />
-          <span>GitHub</span>
-        </a>
-        <a
-          href="https://portfolio.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-white hover:text-white/80"
-        >
-          <LinkIcon size={20} />
-          <span>Live Demo</span>
-        </a>
-      </div>
-    </div>
-  );
+ type Project = {
+  title: string;
+  description: string;
+  tech: string[];
+  github?: string;
+  demo?: string;
 };
 
-const ProjectTwo = () => {
-  return (
-    <div>
-      <p className="font-bold md:text-4xl text-xl text-white">
-        E-commerce Platform
-      </p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Full-stack e-commerce platform with user authentication and payment integration
-      </p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {["Next.js", "Node.js", "MongoDB"].map((tech) => (
-          <span
-            key={tech}
-            className="px-3 py-1 bg-white/10 rounded-full text-sm text-white"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-      <div className="flex gap-4">
-        <a
-          href="https://github.com/username/ecommerce"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-white hover:text-white/80"
-        >
-          <Github size={20} />
-          <span>GitHub</span>
-        </a>
-        <a
-          href="https://ecommerce.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-white hover:text-white/80"
-        >
-          <LinkIcon size={20} />
-          <span>Live Demo</span>
-        </a>
-      </div>
-    </div>
-  );
-};
+const projects: Project[] = [
+  {
+    title: "Portfolio Website",
+    description: "Personal portfolio built with React and TailwindCSS",
+    tech: ["React", "TailwindCSS", "Framer Motion"],
+    github: "https://github.com/username/portfolio",
+    demo: "https://portfolio.com",
+  },
+  {
+    title: "E-commerce Platform",
+    description:
+      "Full-stack e-commerce platform with authentication and payment integration",
+    tech: ["Next.js", "Node.js", "MongoDB"],
+    github: "https://github.com/username/ecommerce",
+    demo: "https://ecommerce.com",
+  },
+  {
+    title: "AI Chat Application",
+    description: "Real-time chat app with AI-powered responses",
+    tech: ["React", "Firebase", "OpenAI API"],
+    github: "https://github.com/username/ai-chat",
+    demo: "https://ai-chat.com",
+  },
+  {
+    title: "Weather Dashboard",
+    description: "Real-time weather visualization with 5-day forecasts",
+    tech: ["React", "OpenWeather API", "TailwindCSS"],
+    github: "https://github.com/username/weather-dashboard",
+    demo: "https://weather.example.com",
+  },
+];
 
-const ProjectThree = () => {
-  return (
-    <div>
-      <p className="font-bold md:text-4xl text-xl text-white">
-        AI Chat Application
-      </p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Real-time chat application with AI-powered responses and multi-language support
-      </p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {["React", "Firebase", "OpenAI API"].map((tech) => (
-          <span
-            key={tech}
-            className="px-3 py-1 bg-white/10 rounded-full text-sm text-white"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-      <div className="flex gap-4">
+const Chip = ({ label }: { label: string }) => (
+  <span className="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-300 rounded-full text-sm">
+    {label}
+  </span>
+);
+
+const ProjectCard = ({ project }: { project: Project }) => (
+  <motion.article
+    initial={{ opacity: 0, y: 12 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.35 }}
+    className="bg-white dark:bg-neutral-900 border border-black/5 dark:border-white/10 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
+  >
+    <h3 className="text-xl font-bold text-neutral-900 dark:text-white">{project.title}</h3>
+    <p className="text-neutral-600 dark:text-neutral-300 mt-2">{project.description}</p>
+    <div className="flex flex-wrap gap-2 mt-4">
+      {project.tech.map((t) => (
+        <Chip key={t} label={t} />
+      ))}
+    </div>
+    <div className="flex gap-6 mt-6 text-blue-600 dark:text-blue-400">
+      {project.github && (
         <a
-          href="https://github.com/username/ai-chat"
+          href={project.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-white hover:text-white/80"
+          className="flex items-center gap-2 hover:opacity-80"
         >
-          <Github size={20} />
+          <Github size={18} />
           <span>GitHub</span>
         </a>
+      )}
+      {project.demo && (
         <a
-          href="https://ai-chat.com"
+          href={project.demo}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-white hover:text-white/80"
+          className="flex items-center gap-2 hover:opacity-80"
         >
-          <LinkIcon size={20} />
+          <LinkIcon size={18} />
           <span>Live Demo</span>
         </a>
-      </div>
+      )}
     </div>
-  );
-};
+  </motion.article>
+);
 
 const Projects = () => {
-  const cards = [
-    {
-      id: 1,
-      content: <ProjectOne />,
-      className: "md:col-span-2",
-      thumbnail: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=3474&auto=format&fit=crop",
-    },
-    {
-      id: 2,
-      content: <ProjectTwo />,
-      className: "col-span-1",
-      thumbnail: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=3474&auto=format&fit=crop",
-    },
-    {
-      id: 3,
-      content: <ProjectThree />,
-      className: "md:col-span-2",
-      thumbnail: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=3474&auto=format&fit=crop",
-    },
-    {
-      id: 4,
-      content: <ProjectOne />,
-      className: "col-span-1",
-      thumbnail: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=3470&auto=format&fit=crop",
-    },
-  ];
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="min-h-screen pt-16 relative overflow-hidden bg-gradient-to-b from-gray-900 to-black"
-    >
-      <Spotlight
-        className="hidden md:block"
-        size={500}
-      />
-      <div className="container mx-auto px-6 relative z-10">
-        <h1 className="text-4xl font-bold text-center mb-12 text-white">My Projects</h1>
-        <div className="max-w-7xl mx-auto">
-          <LayoutGrid cards={cards} />
+    <main className="min-h-screen pt-16 bg-white dark:bg-black">
+      <section className="container mx-auto px-6">
+        <h1 className="text-4xl font-bold text-center mb-12 text-neutral-900 dark:text-white">
+          My Projects
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.slice(0, 3).map((p) => (
+            <ProjectCard key={p.title} project={p} />
+          ))}
         </div>
-      </div>
-    </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          {projects.slice(3).map((p) => (
+            <ProjectCard key={p.title} project={p} />
+          ))}
+        </div>
+      </section>
+    </main>
   );
 };
 
