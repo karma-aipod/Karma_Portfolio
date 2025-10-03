@@ -1,17 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>creative-journey-splash</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-    <meta property="og:image" content="/og-image.png" />
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuhin Bhattacharya - Portfolio</title>
+    <meta name="description" content="From Chemical Labs to Data Dashboards - Tuhin's Portfolio">
+    <meta name="author" content="Tuhin Bhattacharya">
+    <meta property="og:image" content="/og-image.png">
+    <style>
+        /* CSS Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  <body>
-    <div id="root"></div>
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        /* Base Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1a202c; /* gray-900 */
+            background-color: #ffffff;
+        }
+
+        /* Utility Classes */
+        .min-h-screen { min-height: 100vh; }
+        .w-screen { width: 100vw; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .overflow-hidden { overflow: hidden; }
+        .relative { position: relative; }
+        .block { display: block; }
+        .uppercase { text-transform: uppercase; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .leading-relaxed { line-height: 1.625; }
+
+        /* Spacing */
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .p-6 { padding: 1.5rem; }
+        .px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+
+        /* Sizing */
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .max-w-xl { max-width: 36rem; }
+
+        /* Object Fit */
+        .object-cover { object-fit: cover; }
+        .object-center { object-position: center; }
+
+        /* Text Styles */
+        .text-xs { font-size: 0.75rem; }
+        .text-sm { font-size: 0.875rem; }
+        .text-base { font-size: 1rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-5xl { font-size: 3rem; }
+
+        /* Tracking */
+        .tracking-wider { letter-spacing: 0.05em; }
+
+        /* Colors */
+        .text-gray-500 { color: #6b7280; }
+        .text-gray-600 { color: #4b5563; }
+        .text-gray-900 { color: #1a202c; }
+        .text-yellow-500 { color: #eab308; }
+        .border-gray-900 { border-color: #1a202c; }
+        .text-white { color: #ffffff; }
+
+        /* Borders */
+        .border-2 { border-width: 2px; border-style: solid; }
+        .rounded-full { border-radius: 9999px; }
+
+        /* Transitions */
+        .transition-all { transition: all 0.3s ease; }
+
+        /* Hover States */
+        .hover\:bg-gray-900:hover { background-color: #1a202c; }
+        .hover\:text-white:hover { color: #ffffff; }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        .animate-slide-in-up {
+            animation: slideInUp 0.8s ease forwards;
+        }
+
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-700 { animation-delay: 0.7s; }
+        .delay-900 { animation-delay: 0.9s; }
+
+        /* Scale animations for hover and tap */
+        .scale-animation {
+            transition: transform 0.3s ease;
+        }
+
+        .scale-animation:hover {
+            transform: scale(1.05);
+        }
+
+        .scale-animation:active {
+            transform: scale(0.95);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .md\:flex-row { flex-direction: row; }
+            .md\:w-1\/2 { width: 50%; }
+            .md\:h-screen { height: 100vh; }
+            .md\:p-8 { padding: 2rem; }
+            .md\:text-sm { font-size: 0.875rem; }
+            .md\:text-4xl { font-size: 2.25rem; }
+            .md\:text-lg { font-size: 1.125rem; }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\:p-12 { padding: 3rem; }
+            .lg\:text-5xl { font-size: 3rem; }
+        }
+
+        @media (max-width: 767px) {
+            .h-\[40vh\] { height: 40vh; }
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen w-screen flex flex-col md:flex-row overflow-hidden">
+        <div class="w-full md:w-1/2 h-[40vh] md:h-screen relative animate-slide-in-left">
+            <img
+                src="/lovable-uploads/c89c229d-4bfc-4750-aaa3-a1f29cf5d482.png"
+                alt="Tuhin Bhattacharya"
+                class="w-full h-full object-cover object-center"
+            />
+        </div>
+
+        <div class="w-full md:w-1/2 flex items-center justify-center p-6 md:p-8 lg:p-12 animate-slide-in-right">
+            <div class="max-w-xl">
+                <span class="text-xs md:text-sm uppercase tracking-wider text-gray-500 mb-4 block animate-fade-in delay-300">
+                    WELCOME TO MY PORTFOLIO
+                </span>
+
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 animate-slide-in-up delay-500">
+                    From Chemical Labs to <span class="text-yellow-500">Data Dashboards</span>
+                </h1>
+
+                <p class="text-base md:text-lg text-gray-600 mb-8 leading-relaxed animate-fade-in delay-700">
+                    Hi, I'm Tuhin — a Chemical Engineer who discovered a passion for turning
+                    raw data into stories that drive decisions. Currently pursuing Big Data
+                    Analytics at Goa Institute of Management, I blend engineering precision
+                    with analytics thinking to build BI solutions that people actually use.
+                    <br><br>
+                    My journey started in chemical engineering labs and led me to crafting
+                    Power BI dashboards with 300+ DAX measures, optimizing performance, and
+                    helping teams make better decisions faster.
+                </p>
+
+                <button class="px-8 py-3 border-2 border-gray-900 text-gray-900 rounded-full font-semibold scale-animation transition-all animate-fade-in delay-900" onclick="exploreJourney()">
+                    EXPLORE MY JOURNEY
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function exploreJourney() {
+            // For a static page, we can scroll to a section or show more content
+            // Since this is a single page, we can add more sections or link to external portfolio
+            alert("This would navigate to the about page in a full React app. For a static version, consider adding more sections or linking to your online portfolio.");
+            
+            // Alternatively, scroll to a section if added
+            // document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add slight delay to animations to ensure they trigger after page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('[class*="animate-"]');
+            animatedElements.forEach(el => {
+                // Ensure animations play by resetting and adding class again
+                const classes = el.className;
+                el.className = '';
+                setTimeout(() => {
+                    el.className = classes;
+                }, 10);
+            });
+        });
+    </script>
+</body>
 </html>
