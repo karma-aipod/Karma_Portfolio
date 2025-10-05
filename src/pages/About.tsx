@@ -77,7 +77,7 @@ const About = () => {
             <img
               src="/lovable-uploads/IMG_8915.PNG"
               alt="Tuhin Bhattacharya"
-              className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-110 cursor-pointer"
+              className="w-full h-full object-contain object-center transition-transform duration-300 hover:scale-110 cursor-pointer bg-gray-100 dark:bg-gray-800"
             />
           </Card>
         </motion.div>

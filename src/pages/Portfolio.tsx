@@ -60,13 +60,13 @@ const Portfolio = () => {
               <div className="text-xl md:text-2xl text-gray-600 mb-8">
                 <TypeAnimation
                   sequence={[
-                    "I'm a Designer",
+                    "I'm a Data Analyst",
                     1000,
-                    "I'm a Developer",
+                    "I'm a BI Developer",
                     1000,
-                    "I'm an Artist",
+                    "I'm a Chemical Engineer",
                     1000,
-                    "I'm a Photographer",
+                    "I'm a Problem Solver",
                     1000,
                   ]}
                   wrapper="span"
@@ -75,18 +75,15 @@ const Portfolio = () => {
                 />
               </div>
               <div className="flex space-x-6 mb-8">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                  <FaGithub className="w-6 h-6 text-gray-700 hover:text-gray-900 transition-colors" />
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/tuhinbhattacharya28" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin className="w-6 h-6 text-gray-700 hover:text-gray-900 transition-colors" />
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/_threads_of_karma_/" target="_blank" rel="noopener noreferrer">
                   <FaInstagram className="w-6 h-6 text-gray-700 hover:text-gray-900 transition-colors" />
                 </a>
               </div>
               <a
-                href="https://drive.google.com"
+                href="https://drive.google.com/file/d/10bYUunhRF-u_PckJXV5XY8Pxz73_s2g8/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-8 py-3 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-all"
@@ -101,9 +98,9 @@ const Portfolio = () => {
               className="md:w-1/2 mt-12 md:mt-0"
             >
               <img
-                src="/lovable-uploads/b4bec6a0-8b00-42c9-b276-c48d648c269c.png"
+                src="/lovable-uploads/IMG_8915.PNG"
                 alt="Profile"
-                className="rounded-lg shadow-2xl max-w-md mx-auto"
+                className="rounded-lg shadow-2xl max-w-md mx-auto object-contain bg-gray-100"
               />
             </motion.div>
           </div>
@@ -122,26 +119,26 @@ const Portfolio = () => {
               
               {/* Education Items */}
               <TimelineItem
-                year="2010 - 2013"
-                title="MSc IT Master Degree"
-                institution="Harvard University, Cambridge, MA, United States"
-                description="Harvard University is an educational institution that offers graduate, professional, and research programs in the fields of and public health."
+                year="2025 - 2027"
+                title="PGDM - Big Data Analytics"
+                institution="Goa Institute of Management, Goa"
+                description="Pursuing advanced studies in Big Data Analytics, focusing on business intelligence, data engineering, and analytics product development."
                 side="left"
               />
               
               <TimelineItem
-                year="2007 - 2010"
-                title="BCA College Complete Course"
-                institution="Columbia University, New York, NY, United States"
-                description="Columbia University is an educational institution that offers graduate, professional, and research programs in the fields of and public health."
+                year="July 2023 - Dec 2023"
+                title="Business Intelligence Intern"
+                institution="Celebal Technologies"
+                description="Contributed to a 4-member team to devise a 54-page Power BI report with 300+ DAX measures. Enhanced report UI with custom visuals and secured 40% reduction in query loading times."
                 side="right"
               />
               
               <TimelineItem
-                year="1999 - 2007"
-                title="High / Higher Secondary School"
-                institution="Princeton University, Princeton, NJ United States"
-                description="Princeton University is an educational institution that offers graduate, professional, and research programs in the fields of and public health."
+                year="2019 - 2023"
+                title="B.E. Chemical Engineering"
+                institution="Jadavpur University"
+                description="Graduated with 8.32 CGPA. Led complex R&D projects including hydrogen production simulation and aqueous retarded acid formulation for ONGC."
                 side="left"
               />
             </div>
