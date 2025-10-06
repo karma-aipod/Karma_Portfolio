@@ -1,6 +1,6 @@
 {
   "name": "vite_react_shadcn_ts",
-  "homepage": "https://karma-aipod.github.io/Karma_Portfolio/",
+  "homepage": "https://karma-aipod.github.io/Karma_Portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -94,4 +94,5 @@
     "vite": "^5.4.1"
   }
 }
+
 
